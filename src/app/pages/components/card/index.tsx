@@ -1,29 +1,37 @@
 "use client";
+
 import Image from "next/image";
-import axios from "axios";
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { Heart } from "./style";
 import { ResponseObject } from "@/@types";
+import { pokemon } from "@/Api/pokemon";
 
 export default function Card() {
   const [pokemonIMG, setPokemonIMG] = useState<ResponseObject>();
 
-  const Pokemon = useCallback(async () => {
-    const response = await axios.get(
-      "https://pokeapi.co/api/v2/pokemon-form/1/"
-    );
-    const pokemon = response.data;
-    return setPokemonIMG(pokemon);
+  useEffect(() => {
+    async function GetPokemon(id: number) {
+      try {
+        const response = await pokemon.get(`/${id}`);
+        const data = response.data;
+
+        return setPokemonIMG(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    GetPokemon(25);
   }, []);
-  Pokemon();
+
+  const img = pokemonIMG?.sprites.front_default;
 
   return (
     <div>
       <Heart>
         <AiOutlineHeart />
       </Heart>
-      <Image src={""} width={20} height={20} alt={""} />
+      <Image src={img ? img : ""} width={120} height={120} alt={""} />
       <p>Pikachu</p>
       <span>{`XP:`}</span>
       <div>
