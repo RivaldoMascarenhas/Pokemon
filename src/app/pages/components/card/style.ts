@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
+import { AiOutlineHeart } from "react-icons/ai";
 
-export const ContainerModal = styled.div`
-  border: 8px;
-`;
+export const Heart = styled.div``;
