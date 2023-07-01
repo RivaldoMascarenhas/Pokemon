@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { AiOutlineHeart } from "react-icons/ai";
 import { RingLoader } from "react-spinners";
+import { useCard } from "@/hooks/useCard";
 import {
   ContainerCard,
   Heart,
@@ -12,7 +13,6 @@ import {
   Loading,
   Button,
 } from "./style";
-import { useCard } from "@/hooks/useCard";
 
 export default function Card() {
   const { formattedName, img, pokemon, isLoading } = useCard();
