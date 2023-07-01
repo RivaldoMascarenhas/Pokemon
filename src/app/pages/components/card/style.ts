@@ -43,32 +43,102 @@ export const TypeContainer = styled.ul`
   gap: 0.5rem;
 `;
 const typesPokemons = {
-  fire: "red",
-  water: "blue",
-  grass: "green",
-  flying: "lightblue",
-  fighting: "orange",
-  poison: "purple",
-  electric: "yellow",
-  ground: "brown",
-  rock: "gray",
-  psychic: "pink",
-  ice: "lightblue",
-  bug: "green",
-  ghost: "purple",
-  steel: "gray",
-  dragon: "darkblue",
-  dark: "black",
-  fairy: "pink",
+  fire: {
+    background: "red",
+    color: "black",
+  },
+  water: {
+    background: "blue",
+    color: "white",
+  },
+  grass: {
+    background: "green",
+    color: "white",
+  },
+  flying: {
+    background: "lightblue",
+    color: "black",
+  },
+  fighting: {
+    background: "orange",
+    color: "black",
+  },
+  poison: {
+    background: "purple",
+    color: "white",
+  },
+  electric: {
+    background: "yellow",
+    color: "black",
+  },
+  ground: {
+    background: "brown",
+    color: "black",
+  },
+  rock: {
+    background: "gray",
+    color: "white",
+  },
+  psychic: {
+    background: "pink",
+    color: "black",
+  },
+  ice: {
+    background: "lightblue",
+    color: "black",
+  },
+  bug: {
+    background: "green",
+    color: "black",
+  },
+  ghost: {
+    background: "purple",
+    color: "black",
+  },
+  steel: {
+    background: "gray",
+    color: "black",
+  },
+  dragon: {
+    background: "darkblue",
+    color: "black",
+  },
+  dark: {
+    background: "black",
+    color: "white",
+  },
+  fairy: {
+    background: "pink",
+    color: "black",
+  },
+  normal: {
+    background: "#FFCB05",
+    color: "black",
+  },
 };
-export const TypePokemon = styled.li`
+
+export const TypePokemon = styled.li<{ type: string }>`
   list-style: none;
-  font-size: 0.5rem;
-  padding: 0.5rem;
-  color: white;
-  background-color: ${(p) => typesPokemons[p.type]};
+  font-size: 8px;
+  font-weight: 700;
+  padding: 0.3rem 1rem;
+  color: ${(p) => typesPokemons[p.type as keyof typeof typesPokemons].color};
+  background-color: ${(p) =>
+    typesPokemons[p.type as keyof typeof typesPokemons].background};
   border-radius: 8px;
   text-align: center;
 `;
 
-export const Button = styled.button``;
+export const Button = styled.button`
+  padding: 0.5rem 1rem;
+  color: ${(p) => p.theme.colorText};
+  background-color: ${(p) => p.theme.backgroundYellow};
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #bea514;
+  }
+`;

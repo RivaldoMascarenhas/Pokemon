@@ -2,7 +2,10 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { ResponseObject } from "@/@types";
+import { pokemonData } from "@/Api/pokemon";
 import { AiOutlineHeart } from "react-icons/ai";
+import { RingLoader } from "react-spinners";
 import {
   ContainerCard,
   Heart,
@@ -11,10 +14,8 @@ import {
   TypePokemon,
   TypeContainer,
   Loading,
+  Button,
 } from "./style";
-import { ResponseObject } from "@/@types";
-import { pokemonData } from "@/Api/pokemon";
-import { RingLoader } from "react-spinners";
 
 export default function Card() {
   const [pokemon, setPokemon] = useState<ResponseObject>();
@@ -33,7 +34,7 @@ export default function Card() {
         console.log(error);
       }
     }
-    GetPokemon(2);
+    GetPokemon(350);
   }, []);
 
   const img = pokemon?.sprites.front_default;
@@ -64,13 +65,13 @@ export default function Card() {
           <TypeContainer>
             {pokemon?.types.map((item) => {
               return (
-                <TypePokemon type={item.type.name} key={item.slot}>
+                <TypePokemon type={item.type.name} key={item.type.name}>
                   {item.type.name}
                 </TypePokemon>
               );
             })}
           </TypeContainer>
-          <button>Ver detalhes</button>
+          <Button>Ver detalhes</Button>
         </>
       ) : (
         <Loading>
