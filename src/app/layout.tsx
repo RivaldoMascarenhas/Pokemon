@@ -1,5 +1,4 @@
-import StyledProvider from "@/theme/StyledProvider";
-
+import StyledProvider from "@/Global/styledProvider";
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
@@ -13,9 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <StyledProvider>
-        <body className={poppins.className}>{children}</body>
-      </StyledProvider>
+      <body className={poppins.className}>
+        <StyledProvider>{children}</StyledProvider>
+      </body>
     </html>
   );
 }

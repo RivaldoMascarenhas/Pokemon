@@ -3,42 +3,80 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
-import { Heart } from "./style";
+import {
+  ContainerCard,
+  Heart,
+  ImagemContainer,
+  NamePokemon,
+  TypePokemon,
+  TypeContainer,
+  Loading,
+} from "./style";
 import { ResponseObject } from "@/@types";
-import { pokemon } from "@/Api/pokemon";
+import { pokemonData } from "@/Api/pokemon";
+import { RingLoader } from "react-spinners";
 
 export default function Card() {
-  const [pokemonIMG, setPokemonIMG] = useState<ResponseObject>();
+  const [pokemon, setPokemon] = useState<ResponseObject>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function GetPokemon(id: number) {
       try {
-        const response = await pokemon.get(`/${id}`);
+        const response = await pokemonData.get(`/${id}`);
         const data = response.data;
-
-        return setPokemonIMG(data);
+        setInterval(() => {
+          setPokemon(data);
+          setIsLoading(true);
+        }, 2000);
       } catch (error) {
         console.log(error);
       }
     }
-    GetPokemon(25);
+    GetPokemon(2);
   }, []);
 
-  const img = pokemonIMG?.sprites.front_default;
-
+  const img = pokemon?.sprites.front_default;
   return (
-    <div>
-      <Heart>
-        <AiOutlineHeart />
-      </Heart>
-      <Image src={img ? img : ""} width={120} height={120} alt={""} />
-      <p>Pikachu</p>
-      <span>{`XP:`}</span>
-      <div>
-        <p>type</p>
-        <span>type</span>
-      </div>
-      <button>Ver detalhes</button>
-    </div>
+    <ContainerCard>
+      {isLoading ? (
+        <>
+          <Heart>
+            <AiOutlineHeart color="gray" size={28} />
+          </Heart>
+          <ImagemContainer>
+            <Image
+              priority={true}
+              src={img ? img : ""}
+              width={76}
+              height={80}
+              alt={""}
+            />
+          </ImagemContainer>
+
+          <NamePokemon>
+            {pokemon
+              ? pokemon.name.charAt(0).toLocaleUpperCase() +
+                pokemon.name.slice(1)
+              : ""}
+          </NamePokemon>
+          <span>{`ID: ${pokemon?.id}`}</span>
+          <TypeContainer>
+            {pokemon?.types.map((item) => {
+              return (
+                <TypePokemon type={item.type.name} key={item.slot}>
+                  {item.type.name}
+                </TypePokemon>
+              );
+            })}
+          </TypeContainer>
+          <button>Ver detalhes</button>
+        </>
+      ) : (
+        <Loading>
+          <RingLoader color="#FFCB05" size={50} />
+        </Loading>
+      )}
+    </ContainerCard>
   );
 }
