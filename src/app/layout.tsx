@@ -1,4 +1,5 @@
-import StyledProvider from "@/Global/styledProvider";
+import { PokemonProvider } from "@/context/contextPokemon";
+import StyledProvider from "@/global/styledProvider";
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
@@ -13,7 +14,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={poppins.className}>
-        <StyledProvider>{children}</StyledProvider>
+        <PokemonProvider>
+          <StyledProvider>{children}</StyledProvider>
+        </PokemonProvider>
       </body>
     </html>
   );

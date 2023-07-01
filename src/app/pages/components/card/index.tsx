@@ -1,9 +1,5 @@
 "use client";
-
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { ResponseObject } from "@/@types";
-import { pokemonData } from "@/Api/pokemon";
 import { AiOutlineHeart } from "react-icons/ai";
 import { RingLoader } from "react-spinners";
 import {
@@ -16,28 +12,10 @@ import {
   Loading,
   Button,
 } from "./style";
+import { useCard } from "@/hooks/useCard";
 
 export default function Card() {
-  const [pokemon, setPokemon] = useState<ResponseObject>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    async function GetPokemon(id: number) {
-      try {
-        const response = await pokemonData.get(`/${id}`);
-        const data = response.data;
-        setInterval(() => {
-          setPokemon(data);
-          setIsLoading(true);
-        }, 2000);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    GetPokemon(350);
-  }, []);
-
-  const img = pokemon?.sprites.front_default;
+  const { formattedName, img, pokemon, isLoading } = useCard();
   return (
     <ContainerCard>
       {isLoading ? (
@@ -54,13 +32,7 @@ export default function Card() {
               alt={""}
             />
           </ImagemContainer>
-
-          <NamePokemon>
-            {pokemon
-              ? pokemon.name.charAt(0).toLocaleUpperCase() +
-                pokemon.name.slice(1)
-              : ""}
-          </NamePokemon>
+          <NamePokemon>{formattedName}</NamePokemon>
           <span>{`ID: ${pokemon?.id}`}</span>
           <TypeContainer>
             {pokemon?.types.map((item) => {
@@ -75,7 +47,7 @@ export default function Card() {
         </>
       ) : (
         <Loading>
-          <RingLoader color="#FFCB05" size={50} />
+          <RingLoader color="#FFCB05" size={60} />
         </Loading>
       )}
     </ContainerCard>

@@ -44,7 +44,7 @@ export const TypeContainer = styled.ul`
 `;
 const typesPokemons = {
   fire: {
-    background: "red",
+    background: "#FF3326",
     color: "black",
   },
   water: {
@@ -68,7 +68,7 @@ const typesPokemons = {
     color: "white",
   },
   electric: {
-    background: "yellow",
+    background: "#FFCB05",
     color: "black",
   },
   ground: {

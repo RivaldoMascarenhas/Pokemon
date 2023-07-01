@@ -1,4 +1,4 @@
-const ResponseObjectAPI = {
+export const ResponseObjectAPI = {
   abilities: [
     {
       ability: {
