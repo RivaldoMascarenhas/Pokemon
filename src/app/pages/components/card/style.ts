@@ -89,7 +89,7 @@ const typesPokemons = {
   },
   bug: {
     background: "green",
-    color: "black",
+    color: "white",
   },
   ghost: {
     background: "purple",
