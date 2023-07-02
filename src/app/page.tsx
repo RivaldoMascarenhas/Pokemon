@@ -1,5 +1,5 @@
 import Card from "./pages/components/card";
 
 export default function Home() {
-  return <Card />;
+  return <Card namePokemon={25} />;
 }
