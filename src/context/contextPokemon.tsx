@@ -1,17 +1,19 @@
 "use client";
+import { createContext, useReducer } from "react";
 import {
+  AllPokemonProps,
   PokemonContextProps,
   PokemonProviderProps,
+  ResponseObject,
   TypeStateProps,
 } from "@/@types";
 import { pokemonReducer } from "@/reducer/reducer";
-import { createContext, useReducer } from "react";
 
 export const PokemonContext = createContext({} as PokemonContextProps);
 
 const typeStateInitial: TypeStateProps = {
-  AllPokemon: [],
-  pokemon: [],
+  AllNamePokemon: {} as AllPokemonProps,
+  pokemons: {} as ResponseObject,
   isLoading: false,
 };
 

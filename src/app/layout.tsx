@@ -1,5 +1,5 @@
+import StyledProvider from "@/Global/styledProvider";
 import { PokemonProvider } from "@/context/contextPokemon";
-import StyledProvider from "@/global/styledProvider";
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({

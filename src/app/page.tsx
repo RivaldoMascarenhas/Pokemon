@@ -1,11 +1,5 @@
-import Card from "./pages/components/card";
+import SeeAll from "./pages/SeeAll";
 
 export default function Home() {
-  return (
-    <>
-      <Card namePokemon={15} />
-      <Card namePokemon={25} />
-      <Card namePokemon={17} />
-    </>
-  );
+  return <SeeAll />;
 }

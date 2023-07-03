@@ -12023,22 +12023,22 @@ export interface ResultsPokemons {
 }
 
 export interface PokemonProviderProps {
-  children: ReactNode;
-}
-export interface TypeStateProps {
-  AllPokemon: ResultsPokemons[];
-  pokemon: ResponseObject[];
-  isLoading: boolean;
-}
-
-export interface PokemonContextProps {
-  state: TypeStateProps;
-  dispatch: Dispatch<ActionProps>;
+  children: ReactNode; //Tipo que o Provider recebe
 }
 
 export interface AllPokemonProps {
   count: number;
   next: null;
   previous: null;
-  results: ResultsPokemons[];
+  results: ResultsPokemons[]; //Tipo do response "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
+}
+export interface TypeStateProps {
+  AllNamePokemon: AllPokemonProps;
+  pokemons: ResponseObject;
+  isLoading: boolean; //Tipo dos dados no State que é enviado pelo Context
+}
+
+export interface PokemonContextProps {
+  state: TypeStateProps;
+  dispatch: Dispatch<ActionProps>; //Tipo dos dados enviados pelo Context
 }

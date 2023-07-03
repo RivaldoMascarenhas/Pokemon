@@ -15,18 +15,34 @@ import {
 } from "./style";
 import { PokemonContext } from "@/context/contextPokemon";
 import { useCard } from "@/hooks/useCard";
+import { ResponseObject } from "@/@types";
+import { pokemonAPI } from "@/Api/pokemon";
 
 interface CardProps {
-  namePokemon: string | number;
+  pokemon: string;
 }
 
-export default function Card({ namePokemon }: CardProps) {
-  const { isLoading } = useContext(PokemonContext);
-  const { formattedName, img, pokemon } = useCard(namePokemon);
+export default function Card({ pokemon }: CardProps) {
+  const { state, dispatch } = useContext(PokemonContext);
+  const { formattedName, img } = useCard(state.pokemons);
+
+  const getPokemon = async (name: string) => {
+    try {
+      const response = await pokemonAPI.get(`pokemon/${name}`);
+      const data: ResponseObject = response.data;
+      dispatch({
+        type: "pokemons",
+        payload: data,
+      });
+    } catch (error) {
+      console.error("Erro ao fazer as requisições:", error);
+    }
+    getPokemon(pokemon);
+  };
 
   return (
     <ContainerCard>
-      {isLoading ? (
+      {state.isLoading ? (
         <Loading>
           <RingLoader color="#FFCB05" size={60} />
         </Loading>
@@ -39,9 +55,9 @@ export default function Card({ namePokemon }: CardProps) {
             <Image src={img ? img : ""} width={76} height={80} alt="" />
           </ImagemContainer>
           <NamePokemon>{formattedName}</NamePokemon>
-          <span>{pokemon ? `ID: ${pokemon.id}` : ""}</span>
+          <span>{state.pokemons ? `ID: ${state.pokemons.id}` : ""}</span>
           <TypeContainer>
-            {pokemon?.types?.map((item) => (
+            {state.pokemons?.types?.map((item) => (
               <TypePokemon type={item.type.name} key={item.type.name}>
                 {item.type.name}
               </TypePokemon>
