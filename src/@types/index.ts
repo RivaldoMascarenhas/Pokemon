@@ -1,3 +1,6 @@
+import { ActionProps } from "@/reducer/reducer";
+import { Dispatch, ReactNode } from "react";
+
 export const ResponseObjectAPI = {
   abilities: [
     {
@@ -12013,3 +12016,29 @@ export const ResponseObjectAPI = {
   weight: 60,
 };
 export type ResponseObject = typeof ResponseObjectAPI;
+
+export interface ResultsPokemons {
+  name: string;
+  url: string;
+}
+
+export interface PokemonProviderProps {
+  children: ReactNode;
+}
+export interface TypeStateProps {
+  AllPokemon: ResultsPokemons[];
+  pokemon: ResponseObject[];
+  isLoading: boolean;
+}
+
+export interface PokemonContextProps {
+  state: TypeStateProps;
+  dispatch: Dispatch<ActionProps>;
+}
+
+export interface AllPokemonProps {
+  count: number;
+  next: null;
+  previous: null;
+  results: ResultsPokemons[];
+}

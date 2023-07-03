@@ -1,56 +1,25 @@
 "use client";
-import { pokemonAPI } from "@/Api/pokemon";
 import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  createContext,
-  useEffect,
-  useState,
-} from "react";
-
-interface ResultsPokemons {
-  name: string;
-  url: string;
-}
-interface AllPokemonProps {
-  count: number;
-  next: null;
-  previous: null;
-  results: ResultsPokemons[];
-}
-interface PokemonProviderProps {
-  children: ReactNode;
-}
-interface PokemonContextProps {
-  isLoading: boolean;
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
-  allPokemon: AllPokemonProps;
-}
+  PokemonContextProps,
+  PokemonProviderProps,
+  TypeStateProps,
+} from "@/@types";
+import { pokemonReducer } from "@/reducer/reducer";
+import { createContext, useReducer } from "react";
 
 export const PokemonContext = createContext({} as PokemonContextProps);
 
-export const PokemonProvider = ({ children }: PokemonProviderProps) => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [allPokemon, setAllPokemon] = useState<AllPokemonProps>(
-    {} as AllPokemonProps
-  );
+const typeStateInitial: TypeStateProps = {
+  AllPokemon: [],
+  pokemon: [],
+  isLoading: false,
+};
 
-  useEffect(() => {
-    async function GetPokemonAll(total: number) {
-      try {
-        const reponse = await pokemonAPI.get(`pokemon?limit=${total}&offset=0`);
-        const data = reponse.data;
-        setAllPokemon(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    GetPokemonAll(25);
-  }, []);
+export const PokemonProvider = ({ children }: PokemonProviderProps) => {
+  const [state, dispatch] = useReducer(pokemonReducer, typeStateInitial);
 
   return (
-    <PokemonContext.Provider value={{ isLoading, setIsLoading, allPokemon }}>
+    <PokemonContext.Provider value={{ state, dispatch }}>
       {children}
     </PokemonContext.Provider>
   );
