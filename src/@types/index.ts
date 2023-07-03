@@ -12021,7 +12021,6 @@ export interface ResultsPokemons {
   name: string;
   url: string;
 }
-
 export interface PokemonProviderProps {
   children: ReactNode; //Tipo que o Provider recebe
 }
