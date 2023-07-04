@@ -50,7 +50,7 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
     [dispatch]
   );
   useEffect(() => {
-    getPokemonAll(25);
+    getPokemonAll(300);
   }, [getPokemonAll]);
   const getPokemon = useCallback(
     async (name: string) => {

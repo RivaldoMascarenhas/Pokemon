@@ -18,17 +18,19 @@ import {
   Content,
   Indicator,
   ProgressProgress,
+  Title,
 } from "./style";
+import { truncate } from "fs/promises";
 
 export default function Card({ pokemon }: { pokemon: ResponseObject }) {
-  const { formattedName, img } = useCard(pokemon);
+  const { formattedName, imgBack, imgFront } = useCard(pokemon);
   return (
     <ContainerCard>
       <Heart>
         <AiOutlineHeart color="gray" size={28} />
       </Heart>
       <ImagemContainer>
-        <Image src={img ? img : ""} width={76} height={80} alt="" />
+        <Image src={imgFront} width={56} height={60} alt="" />
       </ImagemContainer>
       <NamePokemon>{formattedName}</NamePokemon>
       <span>{pokemon && `ID: ${pokemon.id}`}</span>
@@ -47,13 +49,28 @@ export default function Card({ pokemon }: { pokemon: ResponseObject }) {
         <Dialog.Portal>
           <Dialog.Overlay />
           <Content>
-            <div>
+            <Title>
               <p>Detalhes</p>
-            </div>
+            </Title>
             <div>
               <NamePokemon>{formattedName}</NamePokemon>
               <div>
-                <Image src={img ? img : ""} width={76} height={80} alt="" />
+                <Image
+                  src={imgFront}
+                  width={96}
+                  height={100}
+                  alt=""
+                  loading={"eager"}
+                  priority={true}
+                />
+                <Image
+                  src={imgBack}
+                  loading="eager"
+                  width={96}
+                  height={100}
+                  alt=""
+                  priority={true}
+                />
               </div>
               <div>
                 <p>{`${pokemon.height}m`}</p>
@@ -73,7 +90,7 @@ export default function Card({ pokemon }: { pokemon: ResponseObject }) {
                   return (
                     <li key={item.stat.name}>
                       <p>{item.stat.name}</p>
-                      <ProgressProgress value={item.base_stat} max={110}>
+                      <ProgressProgress value={item.base_stat} max={150}>
                         <Indicator
                           style={{
                             transform: `translateX(-${100 - item.base_stat}%)`,

@@ -3,16 +3,15 @@ import * as Dailog from "@radix-ui/react-dialog";
 import * as Progress from "@radix-ui/react-progress";
 
 export const ContainerCard = styled.div`
-  width: 10.31rem;
-  height: 14.75rem;
+  width: 165px;
+  height: 236px;
   background-color: ${(props) => props.theme.backgroundCard};
   position: relative;
   border-radius: 8px;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-
+  gap: 0.8rem;
   span {
     color: ${(props) => props.theme.colors.gray300};
   }
@@ -75,7 +74,7 @@ const typesPokemons = {
   },
   ground: {
     background: "brown",
-    color: "black",
+    color: "white",
   },
   rock: {
     background: "gray",
@@ -142,6 +141,12 @@ export const Button = styled.button`
   &:hover {
     background-color: #bea514;
   }
+`;
+export const Title = styled.div`
+  font-size: 1rem;
+  border-bottom: 1px solid gray;
+  height: 1.8rem;
+  margin-bottom: 1rem;
 `;
 export const Content = styled(Dailog.Content)`
   background-color: white;
