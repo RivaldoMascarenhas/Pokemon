@@ -1,4 +1,4 @@
-import StyledProvider from "@/Global/styledProvider";
+import StyledProvider from "@/global/styledProvider";
 import { PokemonProvider } from "@/context/contextPokemon";
 import { Poppins } from "next/font/google";
 

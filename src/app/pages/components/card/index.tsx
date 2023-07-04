@@ -1,8 +1,12 @@
 "use client";
-import { useContext } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
-import { RingLoader } from "react-spinners";
 import Image from "next/image";
+import { useCard } from "@/hooks/useCard";
+import { ResponseObject } from "@/@types";
+import { AiOutlineHeart } from "react-icons/ai";
+import { BsBookmark } from "react-icons/bs";
+import * as Dialog from "@radix-ui/react-dialog";
+import * as Progress from "@radix-ui/react-progress";
+
 import {
   ContainerCard,
   Heart,
@@ -10,62 +14,86 @@ import {
   NamePokemon,
   TypePokemon,
   TypeContainer,
-  Loading,
   Button,
+  Content,
+  Indicator,
+  ProgressProgress,
 } from "./style";
-import { PokemonContext } from "@/context/contextPokemon";
-import { useCard } from "@/hooks/useCard";
-import { ResponseObject } from "@/@types";
-import { pokemonAPI } from "@/Api/pokemon";
 
-interface CardProps {
-  pokemon: string;
-}
-
-export default function Card({ pokemon }: CardProps) {
-  const { state, dispatch } = useContext(PokemonContext);
-  const { formattedName, img } = useCard(state.pokemons);
-
-  const getPokemon = async (name: string) => {
-    try {
-      const response = await pokemonAPI.get(`pokemon/${name}`);
-      const data: ResponseObject = response.data;
-      dispatch({
-        type: "pokemons",
-        payload: data,
-      });
-    } catch (error) {
-      console.error("Erro ao fazer as requisições:", error);
-    }
-    getPokemon(pokemon);
-  };
-
+export default function Card({ pokemon }: { pokemon: ResponseObject }) {
+  const { formattedName, img } = useCard(pokemon);
   return (
     <ContainerCard>
-      {state.isLoading ? (
-        <Loading>
-          <RingLoader color="#FFCB05" size={60} />
-        </Loading>
-      ) : (
-        <>
-          <Heart>
-            <AiOutlineHeart color="gray" size={28} />
-          </Heart>
-          <ImagemContainer>
-            <Image src={img ? img : ""} width={76} height={80} alt="" />
-          </ImagemContainer>
-          <NamePokemon>{formattedName}</NamePokemon>
-          <span>{state.pokemons ? `ID: ${state.pokemons.id}` : ""}</span>
-          <TypeContainer>
-            {state.pokemons?.types?.map((item) => (
-              <TypePokemon type={item.type.name} key={item.type.name}>
-                {item.type.name}
-              </TypePokemon>
-            ))}
-          </TypeContainer>
+      <Heart>
+        <AiOutlineHeart color="gray" size={28} />
+      </Heart>
+      <ImagemContainer>
+        <Image src={img ? img : ""} width={76} height={80} alt="" />
+      </ImagemContainer>
+      <NamePokemon>{formattedName}</NamePokemon>
+      <span>{pokemon && `ID: ${pokemon.id}`}</span>
+      <TypeContainer>
+        {pokemon.types?.map((item) => (
+          <TypePokemon type={item.type.name} key={item.type.name}>
+            {item.type.name}
+          </TypePokemon>
+        ))}
+      </TypeContainer>
+
+      <Dialog.Root>
+        <Dialog.Trigger asChild={true}>
           <Button>Ver detalhes</Button>
-        </>
-      )}
+        </Dialog.Trigger>
+        <Dialog.Portal>
+          <Dialog.Overlay />
+          <Content>
+            <div>
+              <p>Detalhes</p>
+            </div>
+            <div>
+              <NamePokemon>{formattedName}</NamePokemon>
+              <div>
+                <Image src={img ? img : ""} width={76} height={80} alt="" />
+              </div>
+              <div>
+                <p>{`${pokemon.height}m`}</p>
+                <span>{`${pokemon.weight}Kg`}</span>
+              </div>
+              <TypeContainer>
+                {pokemon.types?.map((item) => (
+                  <TypePokemon type={item.type.name} key={item.type.name}>
+                    {item.type.name}
+                  </TypePokemon>
+                ))}
+              </TypeContainer>
+
+              <ul>
+                <p>Estátisticas</p>
+                {pokemon.stats.map((item) => {
+                  return (
+                    <li key={item.stat.name}>
+                      <p>{item.stat.name}</p>
+                      <ProgressProgress value={item.base_stat} max={110}>
+                        <Indicator
+                          style={{
+                            transform: `translateX(-${100 - item.base_stat}%)`,
+                          }}
+                        />
+                      </ProgressProgress>
+
+                      <span>{item.base_stat}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+              <button>
+                <BsBookmark /> <p>Adicionar aos favoritos</p>
+              </button>
+            </div>
+            <Dialog.Close />
+          </Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </ContainerCard>
   );
 }

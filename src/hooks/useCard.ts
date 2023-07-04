@@ -1,3 +1,4 @@
+"use client";
 import { ResponseObject } from "@/@types";
 
 export function useCard(pokemon: ResponseObject) {

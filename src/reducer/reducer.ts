@@ -1,5 +1,5 @@
 import {
-  AllPokemonProps,
+  AllNamePokemonProps,
   ResponseObject,
   ResultsPokemons,
   TypeStateProps,
@@ -15,12 +15,12 @@ export function pokemonReducer(state: TypeStateProps, action: ActionProps) {
     case "AllNamePokemon":
       return {
         ...state,
-        AllPokemons: action.payload as AllPokemonProps,
+        AllNamePokemon: action.payload as AllNamePokemonProps,
       };
     case "pokemons":
       return {
         ...state,
-        pokemons: action.payload,
+        pokemons: [...state.pokemons, action.payload],
       };
     case "isLoading":
       return { ...state, isLoading: action.payload as boolean };
