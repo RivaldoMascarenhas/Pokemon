@@ -32,19 +32,16 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
           type: "isLoading",
           payload: true,
         });
-        const reponse = await pokemonAPI.get(`pokemon?limit=${total}&offset=0`);
-        const data: AllNamePokemonProps = reponse.data;
+        const response = await pokemonAPI.get(
+          `pokemon?limit=${total}&offset=0`
+        );
+        const data: AllNamePokemonProps = response.data;
         dispatch({
           type: "AllNamePokemon",
           payload: data,
         });
       } catch (error) {
         console.error("Erro ao fazer as requisições:", error);
-      } finally {
-        dispatch({
-          type: "isLoading",
-          payload: false,
-        });
       }
     },
     [dispatch]
@@ -63,6 +60,12 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
         });
       } catch (error) {
         console.error("Erro ao fazer as requisições:", error);
+      } finally {
+        console.log("Certo");
+        dispatch({
+          type: "isLoading",
+          payload: false,
+        });
       }
     },
     [dispatch]

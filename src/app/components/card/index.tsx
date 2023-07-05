@@ -93,7 +93,7 @@ export default function Card({ pokemon }: { pokemon: ResponseObject }) {
                       <ProgressProgress value={item.base_stat} max={150}>
                         <Indicator
                           style={{
-                            transform: `translateX(-${100 - item.base_stat}%)`,
+                            transform: `translateX(-${140 - item.base_stat}%)`,
                           }}
                         />
                       </ProgressProgress>
