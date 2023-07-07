@@ -20,7 +20,7 @@ export function pokemonReducer(state: TypeStateProps, action: ActionProps) {
     case "pokemons":
       return {
         ...state,
-        pokemons: [...state.pokemons, action.payload],
+        pokemons: action.payload,
       };
     case "isLoading":
       return { ...state, isLoading: action.payload as boolean };

@@ -25,6 +25,8 @@ const typeStateInitial: TypeStateProps = {
 
 export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [state, dispatch] = useReducer(pokemonReducer, typeStateInitial);
+  const TotalPokemons = 800;
+
   const getPokemonAll = useCallback(
     async (total: number) => {
       try {
@@ -46,33 +48,42 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
     },
     [dispatch]
   );
+
   useEffect(() => {
-    getPokemonAll(300);
+    getPokemonAll(TotalPokemons);
   }, [getPokemonAll]);
-  const getPokemon = useCallback(
-    async (name: string) => {
-      try {
-        const response = await pokemonAPI.get(`pokemon/${name}`);
-        const data: ResponseObject = response.data;
-        dispatch({
-          type: "pokemons",
-          payload: data,
-        });
-      } catch (error) {
-        console.error("Erro ao fazer as requisições:", error);
-      } finally {
-        console.log("Certo");
-        dispatch({
-          type: "isLoading",
-          payload: false,
-        });
-      }
-    },
-    [dispatch]
-  );
+
+  const getPokemon = useCallback(async (name: string) => {
+    try {
+      const response = await pokemonAPI.get(`pokemon/${name}`);
+      const data: ResponseObject = response.data;
+      return data;
+    } catch (error) {
+      console.error("Erro ao fazer as requisições:", error);
+    } finally {
+    }
+  }, []);
+
   useEffect(() => {
-    state.AllNamePokemon.results.map((item) => getPokemon(item.name));
+    const fetchPokemons = async () => {
+      const promises = state.AllNamePokemon.results.map((item) =>
+        getPokemon(item.name)
+      );
+      const pokemons = await Promise.all(promises);
+      dispatch({
+        type: "pokemons",
+        payload: pokemons,
+      });
+      dispatch({
+        type: "isLoading",
+        payload: false,
+      });
+    };
+    if (state.AllNamePokemon.results.length > 0) {
+      fetchPokemons();
+    }
   }, [getPokemon, state.AllNamePokemon.results]);
+
   return (
     <PokemonContext.Provider value={{ state, dispatch }}>
       {children}

@@ -7,6 +7,7 @@ import { Loading } from "../components/card/style";
 
 export default function SeeAll() {
   const { state } = useContext(PokemonContext);
+
   return (
     <SeeAllContainer>
       {state.isLoading ? (

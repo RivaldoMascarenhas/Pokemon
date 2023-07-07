@@ -1,6 +1,14 @@
 import { ActionProps } from "@/reducer/reducer";
 import { Dispatch, ReactNode } from "react";
 
+export interface typeStaticProps {
+  hp: string;
+  attack: string;
+  defense: string;
+  "special-attack": string;
+  "special-defense": string;
+  speed: string;
+}
 interface PokemonType {
   slot: number;
   type: {

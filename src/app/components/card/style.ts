@@ -38,7 +38,6 @@ export const NamePokemon = styled.div`
   font-size: 1.125rem;
   font-weight: bold;
 `;
-
 export const TypeContainer = styled.ul`
   display: flex;
   gap: 0.5rem;
@@ -117,11 +116,10 @@ const typesPokemons = {
     color: "black",
   },
 };
-
 export const TypePokemon = styled.li<{ type: string }>`
   list-style: none;
-  font-size: 8px;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 500;
   padding: 0.3rem 1rem;
   color: ${(p) => typesPokemons[p.type as keyof typeof typesPokemons].color};
   background-color: ${(p) =>
@@ -137,45 +135,7 @@ export const Button = styled.button`
   border-radius: 8px;
   font-weight: 700;
   cursor: pointer;
-
   &:hover {
     background-color: #bea514;
   }
-`;
-export const Title = styled.div`
-  font-size: 1rem;
-  border-bottom: 1px solid gray;
-  height: 1.8rem;
-  margin-bottom: 1rem;
-`;
-export const Content = styled(Dailog.Content)`
-  background-color: white;
-  border-radius: 6px;
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
-    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90vw;
-  max-width: 450px;
-  max-height: 85vh;
-  padding: 25px;
-  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-`;
-export const ProgressProgress = styled(Progress.Progress)`
-  position: relative;
-  overflow: hidden;
-  background: #d2d4d6;
-  border-radius: 99999px;
-  width: 80%;
-  height: 8px;
-  transform: translateZ(0);
-`;
-
-export const Indicator = styled(Progress.Indicator)`
-  background-color: ${(props) => props.theme.colors.yellow};
-  width: 100%;
-  height: 100%;
-  transition: transform 660ms cubic-bezier(0.65, 0, 0.35, 1);
 `;
