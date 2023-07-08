@@ -63,6 +63,9 @@ export default function Card({ pokemon }: { pokemon: ResponseObject }) {
           formattedName={formattedName}
           imgFront={imgFront}
           imgBack={imgBack}
+          isClicked={isClicked}
+          addFavorite={addFavorite}
+          removeFavorite={removeFavorite}
         />
       </Dialog.Root>
     </ContainerCard>

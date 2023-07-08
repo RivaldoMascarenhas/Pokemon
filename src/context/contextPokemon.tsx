@@ -22,7 +22,6 @@ const typeStateInitial: TypeStateProps = {
   pokemons: [] as ResponseObject[],
   isLoading: false,
   favorite: [] as ResponseObject[],
-  favoriteState: false as boolean,
 };
 
 export const PokemonProvider = ({ children }: PokemonProviderProps) => {

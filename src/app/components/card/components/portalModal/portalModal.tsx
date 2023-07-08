@@ -1,5 +1,4 @@
 "use client";
-import { useCallback, useContext, useState } from "react";
 import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
 import { BsBookmark } from "react-icons/bs";
@@ -23,33 +22,19 @@ interface PortalModalProps {
   formattedName: string;
   imgFront: string;
   imgBack: string;
+  isClicked: boolean;
+  removeFavorite: () => void;
+  addFavorite: () => void;
 }
-
 export default function PortalModal({
   pokemon,
+  isClicked,
+  removeFavorite,
+  addFavorite,
   formattedName,
   imgFront,
   imgBack,
 }: PortalModalProps) {
-  const { state, dispatch } = useContext(PokemonContext);
-  const [isClicked, setIsClicked] = useState(false);
-  const addFavorite = useCallback(() => {
-    setIsClicked(!isClicked);
-    dispatch({
-      type: "favorite",
-      payload: [...state.favorite, pokemon],
-    });
-  }, [dispatch, isClicked, pokemon, state.favorite]);
-  const removeFavorite = useCallback(() => {
-    setIsClicked(!isClicked);
-    const newFavorite = state.favorite.filter((item) => {
-      return item.name !== pokemon.name;
-    });
-    dispatch({
-      type: "favorite",
-      payload: newFavorite,
-    });
-  }, [dispatch, isClicked, pokemon.name, state.favorite]);
   return (
     <Dialog.Portal>
       <Overlay />
