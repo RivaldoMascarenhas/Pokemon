@@ -235,7 +235,8 @@ export interface AllNamePokemonProps {
 export interface TypeStateProps {
   AllNamePokemon: AllNamePokemonProps;
   pokemons: ResponseObject[];
-  isLoading: boolean; //Tipo dos dados no State que é enviado pelo Context
+  isLoading: boolean;
+  favorite: ResponseObject[]; //Tipo dos dados no State que é enviado pelo Context
 }
 
 export interface PokemonContextProps {

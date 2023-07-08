@@ -21,11 +21,12 @@ const typeStateInitial: TypeStateProps = {
   } as AllNamePokemonProps,
   pokemons: [] as ResponseObject[],
   isLoading: false,
+  favorite: [] as ResponseObject[],
 };
 
 export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [state, dispatch] = useReducer(pokemonReducer, typeStateInitial);
-  const TotalPokemons = 800;
+  const TotalPokemons = 300;
 
   const getPokemonAll = useCallback(
     async (total: number) => {
@@ -69,15 +70,20 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
       const promises = state.AllNamePokemon.results.map((item) =>
         getPokemon(item.name)
       );
-      const pokemons = await Promise.all(promises);
-      dispatch({
-        type: "pokemons",
-        payload: pokemons,
-      });
-      dispatch({
-        type: "isLoading",
-        payload: false,
-      });
+      try {
+        const pokemons = await Promise.all(promises);
+        dispatch({
+          type: "pokemons",
+          payload: pokemons,
+        });
+      } catch (error) {
+        console.error("Error ao fazer as requisições:", error);
+      } finally {
+        dispatch({
+          type: "isLoading",
+          payload: false,
+        });
+      }
     };
     if (state.AllNamePokemon.results.length > 0) {
       fetchPokemons();

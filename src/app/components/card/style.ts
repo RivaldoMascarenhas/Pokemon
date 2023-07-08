@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import * as Dailog from "@radix-ui/react-dialog";
-import * as Progress from "@radix-ui/react-progress";
 
 export const ContainerCard = styled.div`
-  width: 165px;
-  height: 236px;
+  width: 180px;
+  height: 240px;
   background-color: ${(props) => props.theme.backgroundCard};
   position: relative;
   border-radius: 8px;
@@ -16,20 +14,14 @@ export const ContainerCard = styled.div`
     color: ${(props) => props.theme.colors.gray300};
   }
 `;
-export const Loading = styled.div`
-  width: 10.31rem;
-  height: 14.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+
 export const Heart = styled.div`
   position: absolute;
   top: 11px;
   right: 9px;
+  cursor: pointer;
 `;
 export const ImagemContainer = styled.div`
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,15 +37,15 @@ export const TypeContainer = styled.ul`
 const typesPokemons = {
   fire: {
     background: "#FF3326",
-    color: "black",
+    color: "#fffafa",
   },
   water: {
     background: "blue",
-    color: "white",
+    color: "#fffafa",
   },
   grass: {
     background: "green",
-    color: "white",
+    color: "#fffafa",
   },
   flying: {
     background: "lightblue",
@@ -65,7 +57,7 @@ const typesPokemons = {
   },
   poison: {
     background: "purple",
-    color: "white",
+    color: "#fffafa",
   },
   electric: {
     background: "#FFCB05",
@@ -73,7 +65,7 @@ const typesPokemons = {
   },
   ground: {
     background: "brown",
-    color: "white",
+    color: "#fffafa",
   },
   rock: {
     background: "gray",
@@ -89,11 +81,11 @@ const typesPokemons = {
   },
   bug: {
     background: "green",
-    color: "white",
+    color: "#fffafa",
   },
   ghost: {
     background: "purple",
-    color: "black",
+    color: "#fffafa",
   },
   steel: {
     background: "gray",
@@ -101,11 +93,11 @@ const typesPokemons = {
   },
   dragon: {
     background: "darkblue",
-    color: "black",
+    color: "#fffafa",
   },
   dark: {
     background: "black",
-    color: "white",
+    color: "#fffafa",
   },
   fairy: {
     background: "pink",
@@ -126,16 +118,4 @@ export const TypePokemon = styled.li<{ type: string }>`
     typesPokemons[p.type as keyof typeof typesPokemons].background};
   border-radius: 8px;
   text-align: center;
-`;
-export const Button = styled.button`
-  padding: 0.5rem 1rem;
-  color: ${(p) => p.theme.colorText};
-  background-color: ${(p) => p.theme.backgroundYellow};
-  border: none;
-  border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-  &:hover {
-    background-color: #bea514;
-  }
 `;

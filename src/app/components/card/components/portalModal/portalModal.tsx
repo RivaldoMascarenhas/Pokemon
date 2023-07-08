@@ -14,6 +14,7 @@ import {
   WeightHeightContainer,
 } from "./styled";
 import { NamePokemon } from "../../style";
+import { Button } from "../button/styled";
 
 interface PortalModalProps {
   pokemon: ResponseObject;
@@ -65,9 +66,10 @@ export default function PortalModal({
           </WeightHeightContainer>
           <TypePokemons pokemon={pokemon} />
           <StaticPokemon pokemon={pokemon} />
-          <button>
-            <BsBookmark /> <p>Adicionar aos favoritos</p>
-          </button>
+          <Button $favorite="$favorite">
+            <BsBookmark size={15} />
+            <p> Adicionar aos Favoritos</p>
+          </Button>
         </ContentContainer>
         <Dialog.Close />
       </Content>
