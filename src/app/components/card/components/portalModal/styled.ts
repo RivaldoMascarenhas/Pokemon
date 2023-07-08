@@ -50,3 +50,24 @@ export const Overlay = styled(Dailog.Overlay)`
   opacity: 0.7;
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 `;
+interface ButtonProps {
+  $favorite?: "$favorite";
+  $remove?: "remove";
+}
+export const ButtonPortal = styled.button<ButtonProps>`
+  display: ${(props) => (props.$favorite ? "flex" : "block")};
+  padding: ${(props) => (props.$favorite ? "1rem 2rem" : "1rem 2rem")};
+  gap: ${(props) => (props.$favorite ? "1rem" : "0")};
+  justify-content: ${(props) => (props.$favorite ? "center" : "center")};
+  flex-direction: ${(props) => (props.$favorite ? "row" : "row")};
+
+  color: ${(p) => p.theme.colorText};
+  background-color: ${(p) => (p.$remove ? "red" : p.theme.backgroundYellow)};
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  &:hover {
+    background-color: ${(props) => (props.$remove ? "#A30000" : "#bea514")};
+  }
+`;

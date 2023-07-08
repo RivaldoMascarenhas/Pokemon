@@ -1,4 +1,5 @@
 "use client";
+import { useCallback, useContext, useState } from "react";
 import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
 import { BsBookmark } from "react-icons/bs";
@@ -6,6 +7,7 @@ import { ResponseObject } from "@/@types";
 import TypePokemons from "../typePokemons/typePokemons";
 import StaticPokemon from "../staticPokemon/staticPokemon";
 import {
+  ButtonPortal,
   Content,
   ContentContainer,
   ImageContainerModal,
@@ -14,7 +16,7 @@ import {
   WeightHeightContainer,
 } from "./styled";
 import { NamePokemon } from "../../style";
-import { Button } from "../button/styled";
+import { PokemonContext } from "@/context/contextPokemon";
 
 interface PortalModalProps {
   pokemon: ResponseObject;
@@ -29,6 +31,25 @@ export default function PortalModal({
   imgFront,
   imgBack,
 }: PortalModalProps) {
+  const { state, dispatch } = useContext(PokemonContext);
+  const [isClicked, setIsClicked] = useState(false);
+  const addFavorite = useCallback(() => {
+    setIsClicked(!isClicked);
+    dispatch({
+      type: "favorite",
+      payload: [...state.favorite, pokemon],
+    });
+  }, [dispatch, isClicked, pokemon, state.favorite]);
+  const removeFavorite = useCallback(() => {
+    setIsClicked(!isClicked);
+    const newFavorite = state.favorite.filter((item) => {
+      return item.name !== pokemon.name;
+    });
+    dispatch({
+      type: "favorite",
+      payload: newFavorite,
+    });
+  }, [dispatch, isClicked, pokemon.name, state.favorite]);
   return (
     <Dialog.Portal>
       <Overlay />
@@ -66,10 +87,16 @@ export default function PortalModal({
           </WeightHeightContainer>
           <TypePokemons pokemon={pokemon} />
           <StaticPokemon pokemon={pokemon} />
-          <Button $favorite="$favorite">
-            <BsBookmark size={15} />
-            <p> Adicionar aos Favoritos</p>
-          </Button>
+          {isClicked ? (
+            <ButtonPortal $remove="remove" onClick={removeFavorite}>
+              Remover dos Favoritos
+            </ButtonPortal>
+          ) : (
+            <ButtonPortal $favorite="$favorite" onClick={addFavorite}>
+              <BsBookmark size={15} />
+              <p> Adicionar aos Favoritos</p>
+            </ButtonPortal>
+          )}
         </ContentContainer>
         <Dialog.Close />
       </Content>

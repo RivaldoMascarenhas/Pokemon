@@ -1,11 +1,16 @@
 "use client";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { useCard } from "@/hooks/useCard";
 import { ResponseObject } from "@/@types";
 import { PokemonContext } from "@/context/contextPokemon";
-import { ContainerCard, Heart, ImagemContainer, NamePokemon } from "./style";
-import { Button } from "./components/button/styled";
+import {
+  ButtonCard,
+  ContainerCard,
+  Heart,
+  ImagemContainer,
+  NamePokemon,
+} from "./style";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import * as Dialog from "@radix-ui/react-dialog";
 import TypePokemons from "./components/typePokemons/typePokemons";
@@ -15,16 +20,32 @@ export default function Card({ pokemon }: { pokemon: ResponseObject }) {
   const { formattedName, imgBack, imgFront } = useCard(pokemon);
   const { dispatch, state } = useContext(PokemonContext);
   const [isClicked, setIsClicked] = useState(false);
-  const handleClick = () => {
+  const addFavorite = useCallback(() => {
     setIsClicked(!isClicked);
-  };
+    dispatch({
+      type: "favorite",
+      payload: [...state.favorite, pokemon],
+    });
+  }, [dispatch, isClicked, pokemon, state.favorite]);
+
+  const removeFavorite = useCallback(() => {
+    setIsClicked(!isClicked);
+    const newFavorite = state.favorite.filter((item) => {
+      return item.name !== pokemon.name;
+    });
+    dispatch({
+      type: "favorite",
+      payload: newFavorite,
+    });
+  }, [dispatch, isClicked, pokemon.name, state.favorite]);
+
   return (
     <ContainerCard>
       <Heart>
         {isClicked ? (
-          <AiFillHeart onClick={handleClick} size={25} color="red" />
+          <AiFillHeart onClick={removeFavorite} size={25} color="red" />
         ) : (
-          <AiOutlineHeart onClick={handleClick} size={25} />
+          <AiOutlineHeart onClick={addFavorite} size={25} />
         )}
       </Heart>
       <ImagemContainer>
@@ -35,7 +56,7 @@ export default function Card({ pokemon }: { pokemon: ResponseObject }) {
       <TypePokemons pokemon={pokemon} />
       <Dialog.Root>
         <Dialog.Trigger asChild={true}>
-          <Button>Ver Detalhes</Button>
+          <ButtonCard>Ver Detalhes</ButtonCard>
         </Dialog.Trigger>
         <PortalModal
           pokemon={pokemon}

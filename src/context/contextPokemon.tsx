@@ -22,11 +22,12 @@ const typeStateInitial: TypeStateProps = {
   pokemons: [] as ResponseObject[],
   isLoading: false,
   favorite: [] as ResponseObject[],
+  favoriteState: false as boolean,
 };
 
 export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [state, dispatch] = useReducer(pokemonReducer, typeStateInitial);
-  const TotalPokemons = 300;
+  const TotalPokemons = 25;
 
   const getPokemonAll = useCallback(
     async (total: number) => {
