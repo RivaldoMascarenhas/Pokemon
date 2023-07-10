@@ -1,5 +1,5 @@
 "use client";
-import { Container, SeeAllContainer } from "./style";
+import { Container, GroupItens, Root, SeeAllContainer } from "./style";
 import Card from "../components/card";
 import IsLoading from "../components/loading";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
@@ -14,22 +14,22 @@ export default function SeeAll() {
         <IsLoading />
       ) : (
         <>
-          <ToggleGroup.Root
+          <Root
             type="single"
             defaultValue="todos"
             onValueChange={handleValueChange}
           >
-            <ToggleGroup.ToggleGroupItem value="todos">
+            <GroupItens value="todos" colorProps={typeCards}>
               <p>Todos</p>
-            </ToggleGroup.ToggleGroupItem>
+            </GroupItens>
             {typesPokemons.map((t) => {
               return (
-                <ToggleGroup.ToggleGroupItem key={t} value={t}>
+                <GroupItens key={t} value={t} colorProps={typeCards}>
                   <p>{t.charAt(0).toUpperCase() + t.slice(1)}</p>
-                </ToggleGroup.ToggleGroupItem>
+                </GroupItens>
               );
             })}
-          </ToggleGroup.Root>
+          </Root>
           <SeeAllContainer>
             {typeCards === "todos"
               ? state.pokemons.map((p) => <Card key={p.id} pokemon={p} />)
