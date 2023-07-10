@@ -2,7 +2,7 @@
 import { ResponseObject } from "@/@types";
 import { TypeContainer, TypePokemon } from "../../style";
 
-export default function TypePokemons({ pokemon }: { pokemon: ResponseObject }) {
+export function TypePokemons({ pokemon }: { pokemon: ResponseObject }) {
   return (
     <TypeContainer>
       {pokemon.types?.map((item) => (

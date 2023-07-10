@@ -13,8 +13,8 @@ import {
 } from "./style";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import * as Dialog from "@radix-ui/react-dialog";
-import TypePokemons from "./components/typePokemons/typePokemons";
-import PortalModal from "./components/portalModal/portalModal";
+import { PortalModal } from "./components/portalModal";
+import { TypePokemons } from "./components/typePokemons";
 
 export default function Card({ pokemon }: { pokemon: ResponseObject }) {
   const { formattedName, imgBack, imgFront } = useCard(pokemon);

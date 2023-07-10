@@ -7,11 +7,7 @@ import {
   ProgressProgress,
 } from "./styled";
 
-export default function StaticPokemon({
-  pokemon,
-}: {
-  pokemon: ResponseObject;
-}) {
+export function StaticPokemon({ pokemon }: { pokemon: ResponseObject }) {
   const typeStatic: typeStaticProps = {
     hp: "HP",
     attack: "ATK",

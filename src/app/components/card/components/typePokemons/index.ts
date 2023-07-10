@@ -1,0 +1,1 @@
+export { TypePokemons } from "./typePokemons";

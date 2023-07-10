@@ -1,8 +1,12 @@
 import { styled } from "styled-components";
 
+export const Container = styled.div`
+  width: 1024px;
+  margin: 0 auto;
+`;
 export const SeeAllContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-  grid-gap: 0.5rem;
-  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
 `;

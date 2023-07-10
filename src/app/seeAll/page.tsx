@@ -1,50 +1,50 @@
 "use client";
-import { useContext, useState } from "react";
-import { PokemonContext } from "@/context/contextPokemon";
-import { SeeAllContainer } from "./style";
+import { Container, SeeAllContainer } from "./style";
 import Card from "../components/card";
 import IsLoading from "../components/loading";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
+import { useSeeAll } from "@/hooks/useSeeAll";
 
 export default function SeeAll() {
-  const { state } = useContext(PokemonContext);
-  const [typeCards, setTypeCards] = useState<string>("Todos");
-  const handleValueChange = (type: string) => setTypeCards(type);
+  const { state, handleValueChange, typeCards, typesPokemons } = useSeeAll();
 
   return (
-    <div>
+    <Container>
       {state.isLoading ? (
         <IsLoading />
       ) : (
         <>
           <ToggleGroup.Root
             type="single"
-            defaultValue="Todos"
+            defaultValue="todos"
             onValueChange={handleValueChange}
           >
-            <ToggleGroup.ToggleGroupItem value="Todos">
+            <ToggleGroup.ToggleGroupItem value="todos">
               <p>Todos</p>
             </ToggleGroup.ToggleGroupItem>
-            <ToggleGroup.ToggleGroupItem value="Fire">
-              <p>Fire</p>
-            </ToggleGroup.ToggleGroupItem>
-            <ToggleGroup.ToggleGroupItem value="Electric">
-              <p>Electric</p>
-            </ToggleGroup.ToggleGroupItem>
-            <ToggleGroup.ToggleGroupItem value="Water">
-              <p>Water</p>
-            </ToggleGroup.ToggleGroupItem>
+            {typesPokemons.map((t) => {
+              return (
+                <ToggleGroup.ToggleGroupItem key={t} value={t}>
+                  <p>{t.charAt(0).toUpperCase() + t.slice(1)}</p>
+                </ToggleGroup.ToggleGroupItem>
+              );
+            })}
           </ToggleGroup.Root>
           <SeeAllContainer>
-            {typeCards === "Todos" &&
-              state.pokemons.map((p) => <Card key={p.id} pokemon={p} />)}
-            {typeCards === "Electric" &&
-              state.pokemons
-                .filter((p) => p.types.map(()=>).includes("electric"))
-                .map((p) => <Card key={p.id} slot={p.slot} type={p.type} />)}
+            {typeCards === "todos"
+              ? state.pokemons.map((p) => <Card key={p.id} pokemon={p} />)
+              : state.pokemons
+                  .filter((p) =>
+                    p.types
+                      .map((t) => {
+                        return t.type.name;
+                      })
+                      .includes(typeCards)
+                  )
+                  .map((p) => <Card key={p.id} pokemon={p} />)}
           </SeeAllContainer>
         </>
       )}
-    </div>
+    </Container>
   );
 }

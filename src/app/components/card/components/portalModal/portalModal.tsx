@@ -3,8 +3,6 @@ import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
 import { BsBookmark } from "react-icons/bs";
 import { ResponseObject } from "@/@types";
-import TypePokemons from "../typePokemons/typePokemons";
-import StaticPokemon from "../staticPokemon/staticPokemon";
 import {
   ButtonPortal,
   Content,
@@ -15,7 +13,8 @@ import {
   WeightHeightContainer,
 } from "./styled";
 import { NamePokemon } from "../../style";
-import { PokemonContext } from "@/context/contextPokemon";
+import { TypePokemons } from "../typePokemons";
+import { StaticPokemon } from "../staticPokemon";
 
 interface PortalModalProps {
   pokemon: ResponseObject;
@@ -26,7 +25,7 @@ interface PortalModalProps {
   removeFavorite: () => void;
   addFavorite: () => void;
 }
-export default function PortalModal({
+export function PortalModal({
   pokemon,
   isClicked,
   removeFavorite,
