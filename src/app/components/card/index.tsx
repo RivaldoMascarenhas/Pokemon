@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useCard } from "@/hooks/useCard";
+import { useCard } from "@/hooks";
 import { ResponseObject } from "@/@types";
 import {
   ButtonCard,

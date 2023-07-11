@@ -2,11 +2,10 @@
 import { Container, GroupItens, Root, SeeAllContainer } from "./style";
 import Card from "../components/card";
 import IsLoading from "../components/loading";
-import { useSeeAll } from "@/hooks/useSeeAll";
+import { useSeeAll } from "@/hooks";
 
 export default function SeeAll() {
   const { state, handleValueChange, typeCards, typesPokemons } = useSeeAll();
-
   return (
     <Container>
       {state.isLoading ? (
