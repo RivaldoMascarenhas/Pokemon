@@ -1,6 +1,7 @@
 import StyledProvider from "@/global/styledProvider";
 import { PokemonProvider } from "@/context/contextPokemon";
 import { Poppins } from "next/font/google";
+import { SearchInput } from "./search/components/searchInput";
 
 export const metadata = {
   title: "Pokemons",

@@ -8,6 +8,7 @@ import {
   TypeStateProps,
 } from "@/@types";
 import { pokemonReducer } from "@/reducer/reducer";
+import { useGetApi } from "@/hooks";
 
 export const PokemonContext = createContext({} as PokemonContextProps);
 
@@ -25,7 +26,7 @@ const typeStateInitial: TypeStateProps = {
 
 export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [state, dispatch] = useReducer(pokemonReducer, typeStateInitial);
-
+  useGetApi({ state, dispatch });
   return (
     <PokemonContext.Provider value={{ state, dispatch }}>
       {children}

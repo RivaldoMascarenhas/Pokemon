@@ -6,7 +6,6 @@ import { GlobalStyled } from "./globalStyled";
 import { useGetApi } from "@/hooks";
 
 export default function StyledProvider({ children }: { children: ReactNode }) {
-  useGetApi();
   return (
     <>
       <ThemeProvider theme={defaultTheme}>

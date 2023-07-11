@@ -1,11 +1,12 @@
-import { AllNamePokemonProps, ResponseObject } from "@/@types";
+import { AllNamePokemonProps, ResponseObject, TypeStateProps } from "@/@types";
 import { pokemonAPI } from "@/api/pokemon";
-import { PokemonContext } from "@/context/contextPokemon";
-import { useCallback, useContext, useEffect } from "react";
-
-export function useGetApi() {
-  const { dispatch, state } = useContext(PokemonContext);
-
+import { ActionProps } from "@/reducer/reducer";
+import { Dispatch, useCallback, useEffect } from "react";
+interface Props {
+  state: TypeStateProps;
+  dispatch: Dispatch<ActionProps>;
+}
+export function useGetApi({ dispatch, state }: Props) {
   const TotalPokemons = 25;
 
   const getPokemonAll = useCallback(

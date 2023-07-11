@@ -1,8 +1,8 @@
 "use client";
 import { Container, GroupItens, Root, SeeAllContainer } from "./style";
-import Card from "../components/card";
 import IsLoading from "../components/loading";
 import { useSeeAll } from "@/hooks";
+import { Card } from "../components/card";
 
 export default function SeeAll() {
   const { state, handleValueChange, typeCards, typesPokemons } = useSeeAll();

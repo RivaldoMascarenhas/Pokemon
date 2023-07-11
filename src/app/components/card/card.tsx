@@ -14,7 +14,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { PortalModal } from "./components/portalModal";
 import { TypePokemons } from "./components/typePokemons";
 
-export default function Card({ pokemon }: { pokemon: ResponseObject }) {
+export function Card({ pokemon }: { pokemon: ResponseObject }) {
   const {
     formattedName,
     imgBack,
