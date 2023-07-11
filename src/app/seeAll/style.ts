@@ -1,9 +1,11 @@
 import { styled } from "styled-components";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 1rem;
   gap: 1rem;
 `;
 export const SeeAllContainer = styled.div`
@@ -18,15 +20,28 @@ export const Root = styled(ToggleGroup.Root)`
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.3rem;
-  padding: 0.5rem;
 `;
-interface ButtonProps {
-  colorProps: string;
-}
+type ButtonProps = ForwardRefExoticComponent<
+  ToggleGroup.ToggleGroupItemProps &
+    RefAttributes<HTMLButtonElement> & {
+      $propsColor: string;
+    }
+>;
+
 export const GroupItens = styled<ButtonProps>(ToggleGroup.ToggleGroupItem)`
-  border: 1px solid black;
+  border: ${(props) =>
+    props.$propsColor === props.value
+      ? "none"
+      : `1px solid ${props.theme.colors.gray300}`};
+
+  color: ${(props) =>
+    props.$propsColor === props.value ? "black" : props.theme.colors.gray300};
   background: transparent;
-  padding: 0.5rem 2rem;
+  width: 9rem;
+  height: 2.625rem;
   border-radius: 0.5rem;
-  background-color: ${(props) => (props.colorProps === "fire" ? "yellow" : "")};
+  background-color: ${(props) =>
+    props.$propsColor === props.value
+      ? props.theme.backgroundYellow
+      : "transparente"};
 `;

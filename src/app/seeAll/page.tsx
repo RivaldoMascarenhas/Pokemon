@@ -2,7 +2,6 @@
 import { Container, GroupItens, Root, SeeAllContainer } from "./style";
 import Card from "../components/card";
 import IsLoading from "../components/loading";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { useSeeAll } from "@/hooks/useSeeAll";
 
 export default function SeeAll() {
@@ -19,13 +18,13 @@ export default function SeeAll() {
             defaultValue="todos"
             onValueChange={handleValueChange}
           >
-            <GroupItens value="todos" colorProps={typeCards}>
-              <p>Todos</p>
+            <GroupItens $propsColor={typeCards} value="todos">
+              Todos
             </GroupItens>
             {typesPokemons.map((t) => {
               return (
-                <GroupItens key={t} value={t} colorProps={typeCards}>
-                  <p>{t.charAt(0).toUpperCase() + t.slice(1)}</p>
+                <GroupItens key={t} value={t} $propsColor={typeCards}>
+                  {t.charAt(0).toUpperCase() + t.slice(1)}
                 </GroupItens>
               );
             })}

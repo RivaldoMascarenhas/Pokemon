@@ -1,9 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useCallback, useContext, useState } from "react";
 import { useCard } from "@/hooks/useCard";
 import { ResponseObject } from "@/@types";
-import { PokemonContext } from "@/context/contextPokemon";
 import {
   ButtonCard,
   ContainerCard,
@@ -17,27 +15,14 @@ import { PortalModal } from "./components/portalModal";
 import { TypePokemons } from "./components/typePokemons";
 
 export default function Card({ pokemon }: { pokemon: ResponseObject }) {
-  const { formattedName, imgBack, imgFront } = useCard(pokemon);
-  const { dispatch, state } = useContext(PokemonContext);
-  const [isClicked, setIsClicked] = useState(false);
-  const addFavorite = useCallback(() => {
-    setIsClicked(!isClicked);
-    dispatch({
-      type: "favorite",
-      payload: [...state.favorite, pokemon],
-    });
-  }, [dispatch, isClicked, pokemon, state.favorite]);
-
-  const removeFavorite = useCallback(() => {
-    setIsClicked(!isClicked);
-    const newFavorite = state.favorite.filter((item) => {
-      return item.name !== pokemon.name;
-    });
-    dispatch({
-      type: "favorite",
-      payload: newFavorite,
-    });
-  }, [dispatch, isClicked, pokemon.name, state.favorite]);
+  const {
+    formattedName,
+    imgBack,
+    imgFront,
+    addFavorite,
+    isClicked,
+    removeFavorite,
+  } = useCard(pokemon);
 
   return (
     <ContainerCard>
