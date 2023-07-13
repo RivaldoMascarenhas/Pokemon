@@ -20,14 +20,14 @@ export function Card({ pokemon }: { pokemon: ResponseObject }) {
     imgBack,
     imgFront,
     addFavorite,
-    isClicked,
     removeFavorite,
+    isFavorited,
   } = useCard(pokemon);
 
   return (
     <ContainerCard>
       <Heart>
-        {isClicked ? (
+        {isFavorited ? (
           <AiFillHeart onClick={removeFavorite} size={25} color="red" />
         ) : (
           <AiOutlineHeart onClick={addFavorite} size={25} />
@@ -48,7 +48,7 @@ export function Card({ pokemon }: { pokemon: ResponseObject }) {
           formattedName={formattedName}
           imgFront={imgFront}
           imgBack={imgBack}
-          isClicked={isClicked}
+          isClicked={isFavorited}
           addFavorite={addFavorite}
           removeFavorite={removeFavorite}
         />

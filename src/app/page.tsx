@@ -1,3 +1,5 @@
+import { Search } from "./search";
+
 export default function Home() {
-  return;
+  return <Search />;
 }

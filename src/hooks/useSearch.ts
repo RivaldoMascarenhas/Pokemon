@@ -4,9 +4,10 @@ import { ChangeEvent, useContext, useState } from "react";
 export function useSearch() {
   const { state } = useContext(PokemonContext);
   const [resultSearch, setResultSearch] = useState<string>("");
-  const getValueInput = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length > 0) {
-      setResultSearch(e.target.value);
+  const handleGetValueInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const valueInput = e.target.value;
+    if (valueInput.length > 0) {
+      setResultSearch(valueInput);
     } else {
       setResultSearch("");
     }
@@ -18,9 +19,9 @@ export function useSearch() {
       );
       return data;
     } else {
-      return [];
+      return state.pokemons;
     }
   }
   const data = getPokemon();
-  return { getValueInput, data };
+  return { handleGetValueInput, data };
 }
