@@ -5,7 +5,7 @@ import {
   Indicator,
   ItemStatic,
   ProgressProgress,
-} from "./styled";
+} from "./style";
 
 export function StaticPokemon({ pokemon }: { pokemon: ResponseObject }) {
   const typeStatic: typeStaticProps = {

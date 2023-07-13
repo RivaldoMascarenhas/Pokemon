@@ -6,6 +6,7 @@ import { Card } from "../components/card";
 
 export default function SeeAll() {
   const { state, handleValueChange, typeCards, typesPokemons } = useSeeAll();
+
   return (
     <Container>
       {state.isLoading ? (

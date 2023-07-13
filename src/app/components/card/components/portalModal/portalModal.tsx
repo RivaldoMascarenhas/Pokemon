@@ -11,7 +11,7 @@ import {
   Overlay,
   Title,
   WeightHeightContainer,
-} from "./styled";
+} from "./style";
 import { NamePokemon } from "../../style";
 import { TypePokemons } from "../typePokemons";
 import { StaticPokemon } from "../staticPokemon";
