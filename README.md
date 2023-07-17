@@ -3,7 +3,7 @@
 </p>
 
 <h4 align="center"> 
-	Pokedéx
+	Pokemons
 </h4>
 
 <p align="center">
@@ -12,7 +12,6 @@
  <a href="#-layout">Layout</a> • 
  <a href="#-como-executar-o-projeto">Como executar</a> • 
  <a href="#-tecnologias">Tecnologias</a> • 
- <a href="#user-content--licença">Licença</a>
 </p>
 
 ## 💻 Sobre o projeto
@@ -62,7 +61,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 $ git clone https://github.com/RivaldoMascarenhas/pokemon.git
 
 # Acesse a pasta do projeto no seu terminal/cmd
-$ cd pokedex
+$ cd pokemon
 
 # Instale as dependências
 $ npm install
