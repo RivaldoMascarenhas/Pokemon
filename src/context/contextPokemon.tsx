@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useEffect } from "react";
 import {
   AllNamePokemonProps,
   PokemonContextProps,
@@ -27,6 +27,7 @@ const typeStateInitial: TypeStateProps = {
 export const PokemonProvider = ({ children }: PokemonProviderProps) => {
   const [state, dispatch] = useReducer(pokemonReducer, typeStateInitial);
   useGetApi({ state, dispatch });
+
   return (
     <PokemonContext.Provider value={{ state, dispatch }}>
       {children}

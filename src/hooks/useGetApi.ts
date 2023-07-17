@@ -1,3 +1,4 @@
+"use client";
 import { AllNamePokemonProps, ResponseObject, TypeStateProps } from "@/@types";
 import { pokemonAPI } from "@/api/pokemon";
 import { ActionProps } from "@/reducer/reducer";
@@ -42,7 +43,6 @@ export function useGetApi({ dispatch, state }: Props) {
       return data;
     } catch (error) {
       console.error("Erro ao fazer as requisições:", error);
-    } finally {
     }
   }, []);
 
@@ -70,5 +70,18 @@ export function useGetApi({ dispatch, state }: Props) {
       fetchPokemons();
     }
   }, [dispatch, getPokemon, state.AllNamePokemon.results]);
+
+  useEffect(() => {
+    const favoritePokemon = localStorage.getItem("favoritePokemon");
+    if (favoritePokemon) {
+      dispatch({
+        type: "favorite",
+        payload: JSON.parse(favoritePokemon),
+      });
+    } else {
+      localStorage.setItem("favoritePokemon", JSON.stringify([]));
+    }
+  }, [dispatch]);
+
   return;
 }

@@ -1,9 +1,4 @@
-import {
-  AllNamePokemonProps,
-  ResponseObject,
-  ResultsPokemons,
-  TypeStateProps,
-} from "@/@types";
+import { AllNamePokemonProps, ResponseObject, TypeStateProps } from "@/@types";
 
 export interface ActionProps {
   type: keyof TypeStateProps;
@@ -25,7 +20,7 @@ export function pokemonReducer(state: TypeStateProps, action: ActionProps) {
     case "isLoading":
       return { ...state, isLoading: action.payload as boolean };
     case "favorite":
-      return { ...state, favorite: action.payload };
+      return { ...state, favorite: action.payload as ResponseObject[] };
     default:
       return state;
   }

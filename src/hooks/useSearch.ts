@@ -1,3 +1,4 @@
+"use client";
 import { PokemonContext } from "@/context/contextPokemon";
 import { ChangeEvent, useContext, useState } from "react";
 
@@ -19,7 +20,7 @@ export function useSearch() {
       );
       return data;
     } else {
-      return state.pokemons;
+      return [];
     }
   }
   const data = getPokemon();

@@ -1,3 +1,4 @@
+"use client";
 import { RingLoader } from "react-spinners";
 import { Loading } from "./styles";
 
