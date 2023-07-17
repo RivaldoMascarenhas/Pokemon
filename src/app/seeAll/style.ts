@@ -1,5 +1,9 @@
 import { styled } from "styled-components";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
+import {
+  Root,
+  ToggleGroupItem,
+  ToggleGroupItemProps,
+} from "@radix-ui/react-toggle-group";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export const Container = styled.div`
@@ -27,20 +31,19 @@ export const SeeAllContainer = styled.div<SeeAllContainerProps>`
   }
 `;
 
-export const Root = styled(ToggleGroup.Root)`
+export const ContainerRoot = styled(Root)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.3rem;
 `;
 type ButtonProps = ForwardRefExoticComponent<
-  ToggleGroup.ToggleGroupItemProps &
-    RefAttributes<HTMLButtonElement> & {
-      $propsColor: string;
-    }
+  {
+    $propsColor: string;
+  } & ToggleGroupItemProps
 >;
 
-export const GroupItens = styled<ButtonProps>(ToggleGroup.ToggleGroupItem)`
+export const GroupItens = styled<ButtonProps>(ToggleGroupItem)`
   border: ${(props) =>
     props.$propsColor === props.value
       ? "none"
