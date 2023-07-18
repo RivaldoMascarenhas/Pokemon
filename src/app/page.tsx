@@ -1,5 +1,5 @@
-import { Search } from "./search";
+import SeeAll from "./seeAll/page";
 
 export default function Home() {
-  return <Search />;
+  return <SeeAll />;
 }
