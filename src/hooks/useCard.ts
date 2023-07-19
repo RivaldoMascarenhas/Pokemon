@@ -1,4 +1,3 @@
-"use client";
 import { ResponseObject } from "@/@types";
 import { PokemonContext } from "@/context/contextPokemon";
 import { useCallback, useContext } from "react";

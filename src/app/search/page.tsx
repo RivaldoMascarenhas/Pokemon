@@ -4,7 +4,7 @@ import { Card } from "../components/card";
 import { Container, SeeAllContainer } from "../seeAll/style";
 import { SearchInput } from "./components/searchInput";
 
-export function Search() {
+export default function Search() {
   const { handleGetValueInput, data } = useSearch();
   return (
     <Container>
@@ -12,7 +12,7 @@ export function Search() {
         onChange={handleGetValueInput}
         placeholder="Digite o nome de um Pokemon"
       />
-      <SeeAllContainer $marginTop={4}>
+      <SeeAllContainer>
         {data.map((p) => (
           <Card key={p.id} pokemon={p} />
         ))}

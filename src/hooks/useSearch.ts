@@ -1,4 +1,3 @@
-"use client";
 import { PokemonContext } from "@/context/contextPokemon";
 import { ChangeEvent, useContext, useState } from "react";
 

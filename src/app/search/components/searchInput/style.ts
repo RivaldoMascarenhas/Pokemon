@@ -24,11 +24,11 @@ export const ContainerInputSearch = styled.div`
   }
 `;
 export const DivFixed = styled.div`
-  position: fixed;
+  /* position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 9999;
   padding: 1rem;
-  background-color: ${(props) => props.theme.colors.gray100};
+  background-color: ${(props) => props.theme.colors.gray100}; */
 `;

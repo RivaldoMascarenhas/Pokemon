@@ -1,4 +1,3 @@
-"use client";
 import { AllNamePokemonProps, ResponseObject, TypeStateProps } from "@/@types";
 import { pokemonAPI } from "@/api/pokemon";
 import { ActionProps } from "@/reducer/reducer";
