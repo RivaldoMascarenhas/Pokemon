@@ -4,15 +4,14 @@ import { Card } from "../components/card";
 import IsLoading from "../components/loading";
 import * as S from "./style";
 
-export default function SeeAll({ params }: { params: string }) {
+export default function SeeAll() {
   const { state, handleValueChange, typeCards, typesPokemons } = useSeeAll();
   return (
     <S.Container>
       {state.isLoading ? (
         <IsLoading />
       ) : (
-        <>
-          {<p>{params}</p>}
+        <div>
           <S.ContainerRoot
             type="single"
             defaultValue="todos"
@@ -42,7 +41,7 @@ export default function SeeAll({ params }: { params: string }) {
                   )
                   .map((p) => <Card key={p.id} pokemon={p} />)}
           </S.SeeAllContainer>
-        </>
+        </div>
       )}
     </S.Container>
   );

@@ -11,7 +11,11 @@ export const Container = styled.div`
   position: relative;
   flex-direction: column;
   padding: 1rem;
-  gap: 1rem;
+  & > div {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
 `;
 interface SeeAllContainerProps {
   $marginTop?: number;

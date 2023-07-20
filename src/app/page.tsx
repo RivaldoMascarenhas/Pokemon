@@ -1,9 +1,5 @@
-"use client";
-export default function Login() {
-  return (
-    <div>
-      <div>Form</div>
-      <div>image</div>
-    </div>
-  );
+import SeeAll from "./seeAll/seeAll";
+
+export default function Home() {
+  return <SeeAll />;
 }

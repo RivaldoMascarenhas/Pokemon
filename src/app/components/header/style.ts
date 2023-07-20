@@ -4,11 +4,12 @@ export const Header = styled.header`
   height: 100px;
   background-color: #ffcb05;
 `;
+
 export const HeaderContainer = styled.div`
   display: flex;
   width: 70%;
   height: 100px;
-  padding: 1rem;
+  padding: 0 1rem;
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;
