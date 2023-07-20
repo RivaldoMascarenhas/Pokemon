@@ -243,3 +243,13 @@ export interface PokemonContextProps {
   state: TypeStateProps;
   dispatch: Dispatch<ActionProps>; //Tipo dos dados enviados pelo Context
 }
+
+export interface UseCardProps {
+  imgBack: string;
+  imgFront: string;
+  formattedName: string;
+  pokemon: ResponseObject;
+  isFavorited: boolean;
+  handleFavorite: () => void;
+  handleDelete: () => void;
+}

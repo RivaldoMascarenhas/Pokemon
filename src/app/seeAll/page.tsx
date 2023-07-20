@@ -4,7 +4,7 @@ import { Card } from "../components/card";
 import IsLoading from "../components/loading";
 import * as S from "./style";
 
-export default function SeeAll() {
+export default function SeeAll({ params }: { params: string }) {
   const { state, handleValueChange, typeCards, typesPokemons } = useSeeAll();
   return (
     <S.Container>
@@ -12,6 +12,7 @@ export default function SeeAll() {
         <IsLoading />
       ) : (
         <>
+          {<p>{params}</p>}
           <S.ContainerRoot
             type="single"
             defaultValue="todos"

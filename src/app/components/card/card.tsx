@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useCard } from "@/hooks";
-import { ResponseObject } from "@/@types";
+import { ResponseObject, UseCardProps } from "@/@types";
 import * as S from "./style";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -14,9 +14,9 @@ export function Card({ pokemon }: { pokemon: ResponseObject }) {
     <S.ContainerCard>
       <S.Heart>
         {data.isFavorited ? (
-          <AiFillHeart onClick={data.removeFavorite} size={25} color="red" />
+          <AiFillHeart onClick={data.handleDelete} size={25} color="red" />
         ) : (
-          <AiOutlineHeart onClick={data.addFavorite} size={25} />
+          <AiOutlineHeart onClick={data.handleFavorite} size={25} />
         )}
       </S.Heart>
       <S.ImagemContainer>
@@ -29,7 +29,7 @@ export function Card({ pokemon }: { pokemon: ResponseObject }) {
         <Dialog.Trigger asChild={true}>
           <S.ButtonCard>Ver Detalhes</S.ButtonCard>
         </Dialog.Trigger>
-        <PortalModal pokemon={pokemon} />
+        <PortalModal data={data} />
       </Dialog.Root>
     </S.ContainerCard>
   );

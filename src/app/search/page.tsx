@@ -1,13 +1,14 @@
 "use client";
 import { useSearch } from "@/hooks";
 import { Card } from "../components/card";
-import { Container, SeeAllContainer } from "../seeAll/style";
 import { SearchInput } from "./components/searchInput";
+import { Container, SeeAllContainer } from "../seeAll/style";
 
-export default function Search() {
+export default function Search({ params }: { params: string }) {
   const { handleGetValueInput, data } = useSearch();
   return (
     <Container>
+      <>{params}</>
       <SearchInput
         onChange={handleGetValueInput}
         placeholder="Digite o nome de um Pokemon"

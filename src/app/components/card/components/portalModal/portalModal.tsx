@@ -1,20 +1,18 @@
 "use client";
 import Image from "next/image";
-import { useCard } from "@/hooks";
-import { ResponseObject } from "@/@types";
+import { UseCardProps } from "@/@types";
 import { BsBookmark } from "react-icons/bs";
 import { TypePokemons } from "../typePokemons";
 import { NamePokemon } from "../../style";
 import { StaticPokemon } from "../staticPokemon";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as S from "./style";
-import Button from "./components/button/button";
+import { Button } from "@/app/components/button";
 
 interface PortalModalProps {
-  pokemon: ResponseObject;
+  data: UseCardProps;
 }
-export function PortalModal({ pokemon }: PortalModalProps) {
-  const data = useCard(pokemon);
+export function PortalModal({ data }: PortalModalProps) {
   return (
     <Dialog.Portal>
       <S.Overlay />
@@ -47,21 +45,26 @@ export function PortalModal({ pokemon }: PortalModalProps) {
             </div>
           </S.ImageContainerModal>
           <S.WeightHeightContainer>
-            <p>{pokemon.height + "m"}</p>
-            <span>{pokemon.weight + "Kg"}</span>
+            <p>{data.pokemon.height + "m"}</p>
+            <span>{data.pokemon.weight + "Kg"}</span>
           </S.WeightHeightContainer>
-          <TypePokemons pokemon={pokemon} />
-          <StaticPokemon pokemon={pokemon} />
-          {data.isFavorited ? (
-            <S.ButtonPortal $remove="remove" onClick={data.removeFavorite}>
-              Remover dos Favoritos
-            </S.ButtonPortal>
+          <TypePokemons pokemon={data.pokemon} />
+          <StaticPokemon pokemon={data.pokemon} />
+          {!data.isFavorited ? (
+            <Button
+              favorite="favorite"
+              text="Adicionar aos favoritos"
+              iconLeft={BsBookmark}
+              onClick={data.handleFavorite}
+            />
           ) : (
-            <S.ButtonPortal $favorite="favorite" onClick={data.addFavorite}>
-              <BsBookmark size={15} />
-              <p> Adicionar aos Favoritos</p>
-            </S.ButtonPortal>
+            <Button
+              favorite="remove"
+              text="Remove dos favoritos"
+              onClick={data.handleDelete}
+            />
           )}
+          ;
         </S.ContentContainer>
         <Dialog.Close />
       </S.Content>

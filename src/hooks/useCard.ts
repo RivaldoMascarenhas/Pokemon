@@ -1,6 +1,6 @@
 import { ResponseObject } from "@/@types";
 import { PokemonContext } from "@/context/contextPokemon";
-import { useCallback, useContext } from "react";
+import { useContext } from "react";
 
 export function useCard(pokemon: ResponseObject) {
   const { dispatch, state } = useContext(PokemonContext);
@@ -18,7 +18,7 @@ export function useCard(pokemon: ResponseObject) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
-  const addFavorite = () => {
+  const handleFavorite = () => {
     dispatch({
       type: "favorite",
       payload: [...state.favorite, pokemon],
@@ -28,7 +28,7 @@ export function useCard(pokemon: ResponseObject) {
       JSON.stringify([...state.favorite, pokemon])
     );
   };
-  const removeFavorite = () => {
+  const handleDelete = () => {
     const newFavorite = state.favorite.filter((item) => {
       return item.name !== pokemon.name;
     });
@@ -38,13 +38,13 @@ export function useCard(pokemon: ResponseObject) {
     });
     localStorage.setItem("favoritePokemon", JSON.stringify(newFavorite));
   };
-
   return {
     imgBack,
     imgFront,
     formattedName,
-    addFavorite,
-    removeFavorite,
+    handleFavorite,
+    handleDelete,
     isFavorited,
+    pokemon,
   };
 }
