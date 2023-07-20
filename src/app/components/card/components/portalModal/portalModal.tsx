@@ -1,52 +1,33 @@
 "use client";
 import Image from "next/image";
-import * as Dialog from "@radix-ui/react-dialog";
-import { BsBookmark } from "react-icons/bs";
+import { useCard } from "@/hooks";
 import { ResponseObject } from "@/@types";
-import {
-  ButtonPortal,
-  Content,
-  ContentContainer,
-  ImageContainerModal,
-  Overlay,
-  Title,
-  WeightHeightContainer,
-} from "./style";
-import { NamePokemon } from "../../style";
+import { BsBookmark } from "react-icons/bs";
 import { TypePokemons } from "../typePokemons";
+import { NamePokemon } from "../../style";
 import { StaticPokemon } from "../staticPokemon";
+import * as Dialog from "@radix-ui/react-dialog";
+import * as S from "./style";
+import Button from "./components/button/button";
 
 interface PortalModalProps {
   pokemon: ResponseObject;
-  formattedName: string;
-  imgFront: string;
-  imgBack: string;
-  isClicked: boolean;
-  removeFavorite: () => void;
-  addFavorite: () => void;
 }
-export function PortalModal({
-  pokemon,
-  isClicked,
-  removeFavorite,
-  addFavorite,
-  formattedName,
-  imgFront,
-  imgBack,
-}: PortalModalProps) {
+export function PortalModal({ pokemon }: PortalModalProps) {
+  const data = useCard(pokemon);
   return (
     <Dialog.Portal>
-      <Overlay />
-      <Content>
-        <Title>
+      <S.Overlay />
+      <S.Content>
+        <S.Title>
           <p>Detalhes</p>
-        </Title>
-        <ContentContainer>
-          <NamePokemon>{formattedName}</NamePokemon>
-          <ImageContainerModal>
+        </S.Title>
+        <S.ContentContainer>
+          <NamePokemon>{data.formattedName}</NamePokemon>
+          <S.ImageContainerModal>
             <div>
               <Image
-                src={imgFront}
+                src={data.imgFront}
                 width={96}
                 height={100}
                 alt=""
@@ -56,7 +37,7 @@ export function PortalModal({
             </div>
             <div>
               <Image
-                src={imgBack}
+                src={data.imgBack}
                 loading="eager"
                 width={96}
                 height={100}
@@ -64,26 +45,26 @@ export function PortalModal({
                 priority
               />
             </div>
-          </ImageContainerModal>
-          <WeightHeightContainer>
-            <p>{`${pokemon.height}m`}</p>
-            <span>{`${pokemon.weight}Kg`}</span>
-          </WeightHeightContainer>
+          </S.ImageContainerModal>
+          <S.WeightHeightContainer>
+            <p>{pokemon.height + "m"}</p>
+            <span>{pokemon.weight + "Kg"}</span>
+          </S.WeightHeightContainer>
           <TypePokemons pokemon={pokemon} />
           <StaticPokemon pokemon={pokemon} />
-          {isClicked ? (
-            <ButtonPortal $remove="remove" onClick={removeFavorite}>
+          {data.isFavorited ? (
+            <S.ButtonPortal $remove="remove" onClick={data.removeFavorite}>
               Remover dos Favoritos
-            </ButtonPortal>
+            </S.ButtonPortal>
           ) : (
-            <ButtonPortal $favorite="$favorite" onClick={addFavorite}>
+            <S.ButtonPortal $favorite="favorite" onClick={data.addFavorite}>
               <BsBookmark size={15} />
               <p> Adicionar aos Favoritos</p>
-            </ButtonPortal>
+            </S.ButtonPortal>
           )}
-        </ContentContainer>
+        </S.ContentContainer>
         <Dialog.Close />
-      </Content>
+      </S.Content>
     </Dialog.Portal>
   );
 }

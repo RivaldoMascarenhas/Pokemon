@@ -2,57 +2,35 @@
 import Image from "next/image";
 import { useCard } from "@/hooks";
 import { ResponseObject } from "@/@types";
-import {
-  ButtonCard,
-  ContainerCard,
-  Heart,
-  ImagemContainer,
-  NamePokemon,
-} from "./style";
+import * as S from "./style";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import * as Dialog from "@radix-ui/react-dialog";
 import { PortalModal } from "./components/portalModal";
 import { TypePokemons } from "./components/typePokemons";
 
 export function Card({ pokemon }: { pokemon: ResponseObject }) {
-  const {
-    formattedName,
-    imgBack,
-    imgFront,
-    addFavorite,
-    removeFavorite,
-    isFavorited,
-  } = useCard(pokemon);
-
+  const data = useCard(pokemon);
   return (
-    <ContainerCard>
-      <Heart>
-        {isFavorited ? (
-          <AiFillHeart onClick={removeFavorite} size={25} color="red" />
+    <S.ContainerCard>
+      <S.Heart>
+        {data.isFavorited ? (
+          <AiFillHeart onClick={data.removeFavorite} size={25} color="red" />
         ) : (
-          <AiOutlineHeart onClick={addFavorite} size={25} />
+          <AiOutlineHeart onClick={data.addFavorite} size={25} />
         )}
-      </Heart>
-      <ImagemContainer>
-        <Image priority src={imgFront} width={56} height={60} alt="" />
-      </ImagemContainer>
-      <NamePokemon>{formattedName}</NamePokemon>
-      <span>{pokemon && `ID: ${pokemon.id}`}</span>
+      </S.Heart>
+      <S.ImagemContainer>
+        <Image priority src={data.imgFront} width={56} height={60} alt="" />
+      </S.ImagemContainer>
+      <S.NamePokemon>{data.formattedName}</S.NamePokemon>
+      <span>{`ID: ${pokemon.id}`}</span>
       <TypePokemons pokemon={pokemon} />
       <Dialog.Root>
         <Dialog.Trigger asChild={true}>
-          <ButtonCard>Ver Detalhes</ButtonCard>
+          <S.ButtonCard>Ver Detalhes</S.ButtonCard>
         </Dialog.Trigger>
-        <PortalModal
-          pokemon={pokemon}
-          formattedName={formattedName}
-          imgFront={imgFront}
-          imgBack={imgBack}
-          isClicked={isFavorited}
-          addFavorite={addFavorite}
-          removeFavorite={removeFavorite}
-        />
+        <PortalModal pokemon={pokemon} />
       </Dialog.Root>
-    </ContainerCard>
+    </S.ContainerCard>
   );
 }

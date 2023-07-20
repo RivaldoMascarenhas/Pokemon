@@ -1,34 +1,34 @@
 "use client";
-import { Container, ContainerRoot, GroupItens, SeeAllContainer } from "./style";
-import IsLoading from "../components/loading";
 import { useSeeAll } from "@/hooks";
 import { Card } from "../components/card";
+import IsLoading from "../components/loading";
+import * as S from "./style";
 
 export default function SeeAll() {
   const { state, handleValueChange, typeCards, typesPokemons } = useSeeAll();
   return (
-    <Container>
+    <S.Container>
       {state.isLoading ? (
         <IsLoading />
       ) : (
         <>
-          <ContainerRoot
+          <S.ContainerRoot
             type="single"
             defaultValue="todos"
             onValueChange={handleValueChange}
           >
-            <GroupItens $propsColor={typeCards} value="todos">
+            <S.GroupItens $propsColor={typeCards} value="todos">
               Todos
-            </GroupItens>
+            </S.GroupItens>
             {typesPokemons.map((t) => {
               return (
-                <GroupItens key={t} value={t} $propsColor={typeCards}>
+                <S.GroupItens key={t} value={t} $propsColor={typeCards}>
                   {t.charAt(0).toUpperCase() + t.slice(1)}
-                </GroupItens>
+                </S.GroupItens>
               );
             })}
-          </ContainerRoot>
-          <SeeAllContainer>
+          </S.ContainerRoot>
+          <S.SeeAllContainer>
             {typeCards === "todos"
               ? state.pokemons.map((p) => <Card key={p.id} pokemon={p} />)
               : state.pokemons
@@ -40,9 +40,9 @@ export default function SeeAll() {
                       .includes(typeCards)
                   )
                   .map((p) => <Card key={p.id} pokemon={p} />)}
-          </SeeAllContainer>
+          </S.SeeAllContainer>
         </>
       )}
-    </Container>
+    </S.Container>
   );
 }

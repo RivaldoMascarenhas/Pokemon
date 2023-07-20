@@ -51,7 +51,7 @@ export const Overlay = styled(Dailog.Overlay)`
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 `;
 interface ButtonProps {
-  $favorite?: "$favorite";
+  $favorite?: "favorite";
   $remove?: "remove";
 }
 export const ButtonPortal = styled.button<ButtonProps>`

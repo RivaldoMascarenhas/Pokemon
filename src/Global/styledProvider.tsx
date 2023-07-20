@@ -5,10 +5,10 @@ import { GlobalStyled } from "./globalStyled";
 import { defaultTheme, dark } from "@/theme";
 
 export default function StyledProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState(defaultTheme);
+  const [theme, setTheme] = useState(true);
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme ? defaultTheme : dark}>
         <GlobalStyled />
         {children}
       </ThemeProvider>
