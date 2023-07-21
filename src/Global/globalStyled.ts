@@ -9,4 +9,6 @@ export const GlobalStyled = createGlobalStyle`
   }
   body {
   background-color: ${(props) => props.theme.background};
+  overflow: hidden;
+
 }`;

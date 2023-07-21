@@ -4,7 +4,6 @@ import { useContext } from "react";
 
 export function useCard(pokemon: ResponseObject) {
   const { dispatch, state } = useContext(PokemonContext);
-
   const isFavorited = state.favorite.some((item) => item.name === pokemon.name);
 
   const imgFront = pokemon.sprites?.front_default;

@@ -8,7 +8,6 @@ import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export const Container = styled.div`
   display: flex;
-  position: relative;
   flex-direction: column;
   padding: 1rem;
   & > div {
@@ -18,21 +17,18 @@ export const Container = styled.div`
   }
 `;
 interface SeeAllContainerProps {
-  $marginTop?: number;
+  $padding?: number;
 }
 export const SeeAllContainer = styled.div<SeeAllContainerProps>`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  grid-template-rows: max-content;
   justify-content: center;
-  margin-top: ${(p) => p.$marginTop}rem;
-  @media (max-width: 386px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-  }
+  grid-gap: 1rem;
+  height: 720px;
+  padding: ${({ $padding }) => $padding}rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 export const ContainerRoot = styled(Root)`

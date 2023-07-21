@@ -1,5 +1,5 @@
-import SeeAll from "./seeAll/seeAll";
+import { Header } from "./components/header";
 
 export default function Home() {
-  return <SeeAll />;
+  return <Header />;
 }

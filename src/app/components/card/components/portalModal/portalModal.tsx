@@ -26,8 +26,8 @@ export function PortalModal({ data }: PortalModalProps) {
             <div>
               <Image
                 src={data.imgFront}
-                width={96}
-                height={100}
+                width={86}
+                height={90}
                 alt=""
                 loading={"eager"}
                 priority
@@ -37,8 +37,8 @@ export function PortalModal({ data }: PortalModalProps) {
               <Image
                 src={data.imgBack}
                 loading="eager"
-                width={96}
-                height={100}
+                width={86}
+                height={90}
                 alt=""
                 priority
               />
@@ -64,7 +64,6 @@ export function PortalModal({ data }: PortalModalProps) {
               onClick={data.handleDelete}
             />
           )}
-          ;
         </S.ContentContainer>
         <Dialog.Close />
       </S.Content>

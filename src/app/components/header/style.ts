@@ -20,6 +20,9 @@ export const HeaderContainer = styled.div`
   }
   & > button {
   }
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;
 export const Main = styled.main`
   width: 70%;
@@ -27,4 +30,8 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;

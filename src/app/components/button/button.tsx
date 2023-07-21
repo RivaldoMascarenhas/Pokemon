@@ -1,3 +1,4 @@
+"use client";
 import { ButtonHTMLAttributes, ElementType } from "react";
 import { ButtonPortal } from "./style";
 
@@ -17,7 +18,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <>
-      <ButtonPortal {...restprops} favorite={favorite}>
+      <ButtonPortal {...restprops} $favorite={favorite}>
         {IconLeft && <IconLeft />}
         {text}
         {IconRight && <IconRight />}
