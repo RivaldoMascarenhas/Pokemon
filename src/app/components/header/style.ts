@@ -25,10 +25,10 @@ export const HeaderContainer = styled.div`
     width: 90%;
   }
 `;
-export const Logo = styled.div`
+export const Logo = styled.a`
   cursor: pointer;
   &:hover {
-    transform: scale(102%);
+    transform: scale(101%);
   }
 `;
 export const Main = styled.main`

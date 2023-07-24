@@ -17,7 +17,7 @@ export function Header() {
     <div>
       <S.Header>
         <S.HeaderContainer>
-          <S.Logo>
+          <S.Logo href="/">
             <Image src={logo} width={75} height={30} alt={"Pokémon"} />
           </S.Logo>
 
