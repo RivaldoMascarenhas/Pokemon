@@ -1,14 +1,14 @@
 import { styled } from "styled-components";
 export const Header = styled.header`
   width: 100%;
-  height: 100px;
+  height: 50px;
   background-color: #ffcb05;
 `;
 
 export const HeaderContainer = styled.div`
   display: flex;
   width: 70%;
-  height: 100px;
+  height: 100%;
   padding: 0 1rem;
   margin: 0 auto;
   justify-content: space-between;
@@ -16,7 +16,7 @@ export const HeaderContainer = styled.div`
   & > ul {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1rem;
 
     height: 100%;
     align-items: center;
@@ -37,6 +37,7 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 
   @media screen and (max-width: 768px) {
     width: 90%;

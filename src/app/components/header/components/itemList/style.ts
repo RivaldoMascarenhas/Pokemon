@@ -17,7 +17,7 @@ export const ItemContainer = styled.li<ItemContainerProps>`
     p.isCliked === "active" ? "6px solid black" : "6px solid transparent"};
   && > span {
     position: absolute;
-    top: 1.8rem;
+    top: 0.5rem;
     right: 0rem;
     background-color: red;
     width: 0.9rem;

@@ -8,6 +8,7 @@ import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export const Container = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   padding: 1rem;
   & > div {
@@ -25,6 +26,7 @@ export const SeeAllContainer = styled.div<SeeAllContainerProps>`
   grid-template-rows: max-content;
   justify-content: center;
   grid-gap: 1rem;
+  width: 100%;
   height: 720px;
   padding: ${({ $padding }) => $padding}rem;
   overflow-y: auto;
