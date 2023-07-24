@@ -6,7 +6,7 @@ export default function IsLoading() {
   return (
     <S.Loading>
       <RingLoader size={120} color="#FFCB05" />
-      <p>Loading</p>
+      <p>Loading...</p>
     </S.Loading>
   );
 }

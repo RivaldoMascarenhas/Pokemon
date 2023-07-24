@@ -20,7 +20,7 @@ const typeStateInitial: TypeStateProps = {
     results: [],
   } as AllNamePokemonProps,
   pokemons: [] as ResponseObject[],
-  isLoading: false,
+  isLoading: true,
   favorite: [] as ResponseObject[],
 };
 

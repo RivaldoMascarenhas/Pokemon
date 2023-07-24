@@ -1,16 +1,22 @@
 import { TypeStateProps } from "@/@types";
 import { ReactNode, LiHTMLAttributes } from "react";
+import { ItemContainer } from "./style";
 
 interface ItemProps extends LiHTMLAttributes<HTMLLIElement> {
-  state: number;
-  children: ReactNode;
+  numberFavorite?: number;
   isClicked: "active" | "disable";
+  text: string;
 }
-export function Item({ state, children, isClicked, ...rest }: ItemProps) {
+export function Item({
+  numberFavorite = 0,
+  text = "",
+  isClicked,
+  ...rest
+}: ItemProps) {
   return (
-    <li {...rest} isClicked>
-      <p>{children}</p>
-      {state > 0 && <span>{state}</span>}
-    </li>
+    <ItemContainer {...rest} isCliked={isClicked}>
+      <p>{text}</p>
+      {numberFavorite > 0 && <span>{numberFavorite}</span>}
+    </ItemContainer>
   );
 }

@@ -13,15 +13,22 @@ export const HeaderContainer = styled.div`
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;
-  & > nav > ul {
+  & > ul {
     display: flex;
     list-style: none;
     gap: 2rem;
-  }
-  & > button {
+
+    height: 100%;
+    align-items: center;
   }
   @media screen and (max-width: 768px) {
     width: 90%;
+  }
+`;
+export const Logo = styled.div`
+  cursor: pointer;
+  &:hover {
+    transform: scale(102%);
   }
 `;
 export const Main = styled.main`
