@@ -1,5 +1,4 @@
-import { TypeStateProps } from "@/@types";
-import { ReactNode, LiHTMLAttributes } from "react";
+import { LiHTMLAttributes } from "react";
 import { ItemContainer } from "./style";
 
 interface ItemProps extends LiHTMLAttributes<HTMLLIElement> {
@@ -14,7 +13,7 @@ export function Item({
   ...rest
 }: ItemProps) {
   return (
-    <ItemContainer {...rest} $isCliked={isclicked}>
+    <ItemContainer {...rest} $active={isclicked}>
       <p>{text}</p>
       {numberFavorite > 0 && <span>{numberFavorite}</span>}
     </ItemContainer>
