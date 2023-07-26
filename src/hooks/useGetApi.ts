@@ -7,7 +7,7 @@ interface Props {
   dispatch: Dispatch<ActionProps>;
 }
 export function useGetApi({ dispatch, state }: Props) {
-  const TotalPokemons = 25;
+  const TotalPokemons = 20;
 
   const getPokemonAll = useCallback(
     async (total: number) => {

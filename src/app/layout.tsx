@@ -21,9 +21,9 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={poppins.className}>
         <PokemonProvider>
-          <StyledProvider>
-            <Header>{children}</Header>
-          </StyledProvider>
+          <Header>
+            <StyledProvider>{children}</StyledProvider>
+          </Header>
         </PokemonProvider>
       </body>
     </html>

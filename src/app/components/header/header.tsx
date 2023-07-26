@@ -10,7 +10,7 @@ import logo from "public/logo.png";
 
 export function Header({ children }: { children: ReactNode }) {
   const { state } = useContext(PokemonContext);
-  const [page, setPage] = useState("seeAll");
+  const [page, setPage] = useState("/");
   const router = useRouter();
   const numberFavorites = state.favorite.length;
   const handlePage = (text: string) => {
