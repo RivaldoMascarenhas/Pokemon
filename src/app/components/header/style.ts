@@ -21,6 +21,18 @@ export const HeaderContainer = styled.div`
     height: 100%;
     align-items: center;
   }
+  & > button {
+    width: 5.5625rem;
+    height: 1.75rem;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 0.5rem;
+    border-radius: 8px;
+    border: solid 1px black;
+    cursor: pointer;
+  }
   @media screen and (max-width: 768px) {
     width: 90%;
   }
@@ -32,7 +44,7 @@ export const Logo = styled.a`
   }
 `;
 export const Main = styled.main`
-  width: 70%;
+  width: 75%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

@@ -2,10 +2,11 @@
 import { ReactNode, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PokemonContext } from "@/context/contextPokemon";
+import { Item } from "../itemList/item";
+import { FiLogOut } from "react-icons/fi";
 import Image from "next/image";
 import * as S from "./style";
 import logo from "public/logo.png";
-import { Item } from "../itemList/item";
 
 export function Header({ children }: { children: ReactNode }) {
   const { state } = useContext(PokemonContext);
@@ -37,11 +38,13 @@ export function Header({ children }: { children: ReactNode }) {
             />
             <Item
               text={"Ver todos"}
-              isclicked={page === "seeAll" ? "active" : "disable"}
-              onClick={() => handlePage("seeAll")}
+              isclicked={page === "/" ? "active" : "disable"}
+              onClick={() => handlePage("/")}
             />
           </ul>
-          <button>Sair</button>
+          <button>
+            Sair <FiLogOut />
+          </button>
         </S.HeaderContainer>
       </S.Header>
       <S.Main>{children}</S.Main>

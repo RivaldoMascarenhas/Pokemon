@@ -22,9 +22,8 @@ interface SeeAllContainerProps {
 }
 export const SeeAllContainer = styled.div<SeeAllContainerProps>`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-  grid-template-rows: max-content;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 180px));
+  grid-template-rows: repeat(auto-fill, minmax(240px, 240px));
   grid-gap: 1rem;
   width: 100%;
   height: 720px;
