@@ -1,4 +1,4 @@
-import { PokemonContext } from "@/context/contextPokemon";
+import { PokemonContext } from "@/app/context/contextPokemon";
 import { ChangeEvent, useContext, useState } from "react";
 
 export function useSearch() {

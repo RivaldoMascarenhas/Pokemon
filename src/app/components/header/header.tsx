@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
-import { PokemonContext } from "@/context/contextPokemon";
+import { PokemonContext } from "@/app/context/contextPokemon";
 import Image from "next/image";
 import * as S from "./style";
 import logo from "public/logo.png";

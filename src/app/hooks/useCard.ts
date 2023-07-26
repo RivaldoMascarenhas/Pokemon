@@ -1,5 +1,5 @@
 import { ResponseObject } from "@/@types";
-import { PokemonContext } from "@/context/contextPokemon";
+import { PokemonContext } from "@/app/context/contextPokemon";
 import { useContext } from "react";
 
 export function useCard(pokemon: ResponseObject) {

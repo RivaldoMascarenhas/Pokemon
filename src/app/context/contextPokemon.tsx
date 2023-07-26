@@ -7,8 +7,8 @@ import {
   ResponseObject,
   TypeStateProps,
 } from "@/@types";
-import { pokemonReducer } from "@/reducer/reducer";
-import { useGetApi } from "@/hooks";
+import { pokemonReducer } from "@/app/reducer/reducer";
+import { useGetApi } from "@/app/hooks";
 
 export const PokemonContext = createContext({} as PokemonContextProps);
 

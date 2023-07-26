@@ -1,5 +1,5 @@
 "use client";
-import { PokemonContext } from "@/context/contextPokemon";
+import { PokemonContext } from "@/app/context/contextPokemon";
 import { useContext } from "react";
 import { Card } from "../../components/card";
 import { SeeAllContainer } from "../seeAll/style";

@@ -1,5 +1,5 @@
 "use client";
-import { useSearch } from "@/hooks";
+import { useSearch } from "@/app/hooks";
 import { SearchInput } from "./components/searchInput";
 import { Card } from "@/app/components/card";
 import * as S from "../seeAll/style";

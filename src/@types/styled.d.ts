@@ -1,4 +1,4 @@
-import { defaultTheme } from "@/theme/_defaultTheme";
+import { defaultTheme } from "@/app/theme/_defaultTheme";
 import "styled-components";
 
 type ThemeType = typeof defaultTheme;
