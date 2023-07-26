@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useCard } from "@/app/hooks";
+import { useCard } from "@/hooks";
 import { ResponseObject, UseCardProps } from "@/@types";
 import * as S from "./style";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";

@@ -1,13 +1,13 @@
 import { AllNamePokemonProps, ResponseObject, TypeStateProps } from "@/@types";
-import { pokemonAPI } from "@/app/api/pokemon";
-import { ActionProps } from "@/app/reducer/reducer";
+import { pokemonAPI } from "@/api/pokemon";
+import { ActionProps } from "@/reducer/reducer";
 import { Dispatch, useCallback, useEffect } from "react";
 interface Props {
   state: TypeStateProps;
   dispatch: Dispatch<ActionProps>;
 }
 export function useGetApi({ dispatch, state }: Props) {
-  const TotalPokemons = 30;
+  const TotalPokemons = 800;
 
   const getPokemonAll = useCallback(
     async (total: number) => {

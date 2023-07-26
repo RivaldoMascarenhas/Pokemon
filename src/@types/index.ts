@@ -1,4 +1,4 @@
-import { ActionProps } from "@/app/reducer/reducer";
+import { ActionProps } from "@/reducer/reducer";
 import { Dispatch, ReactNode } from "react";
 
 export interface typeStaticProps {
