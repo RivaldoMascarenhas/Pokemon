@@ -1,7 +1,7 @@
 "use client";
 import { useSeeAll } from "@/hooks";
-import { Card } from "../components/card";
 import * as S from "./style";
+import { Card } from "../card";
 
 export function SeeAll() {
   const { state, handleValueChange, typeCards, typesPokemons } = useSeeAll();

@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useCard } from "@/hooks";
-import { ResponseObject, UseCardProps } from "@/@types";
+import { ResponseObject } from "@/@types";
 import * as S from "./style";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import * as Dialog from "@radix-ui/react-dialog";
