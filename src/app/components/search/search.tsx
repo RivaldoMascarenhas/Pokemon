@@ -1,6 +1,6 @@
 "use client";
 import { useSearch } from "@/hooks";
-import * as S from "../../seeAll/style";
+import * as S from "../seeAll/style";
 import { SearchInput } from "../searchInput";
 import { Card } from "../card";
 
