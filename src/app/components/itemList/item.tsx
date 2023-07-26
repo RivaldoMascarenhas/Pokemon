@@ -4,17 +4,17 @@ import { ItemContainer } from "./style";
 
 interface ItemProps extends LiHTMLAttributes<HTMLLIElement> {
   numberFavorite?: number;
-  isClicked: "active" | "disable";
+  isclicked: "active" | "disable";
   text: string;
 }
 export function Item({
   numberFavorite = 0,
   text = "",
-  isClicked,
+  isclicked,
   ...rest
 }: ItemProps) {
   return (
-    <ItemContainer {...rest} isCliked={isClicked}>
+    <ItemContainer {...rest} $isCliked={isclicked}>
       <p>{text}</p>
       {numberFavorite > 0 && <span>{numberFavorite}</span>}
     </ItemContainer>

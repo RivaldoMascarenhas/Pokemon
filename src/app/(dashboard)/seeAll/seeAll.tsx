@@ -1,7 +1,7 @@
 "use client";
 import { useSeeAll } from "@/hooks";
-import { Card } from "../card";
-import IsLoading from "../loading";
+import { Card } from "../../components/card";
+import IsLoading from "../../components/loading";
 import * as S from "./style";
 
 export function SeeAll() {

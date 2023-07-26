@@ -1,6 +1,7 @@
 import StyledProvider from "@/global/styledProvider";
 import { PokemonProvider } from "@/context/contextPokemon";
 import { Poppins } from "next/font/google";
+import { Header } from "./components/header";
 
 export const metadata = {
   title: "Pokemons",
@@ -10,6 +11,7 @@ const poppins = Poppins({
   weight: ["400", "500", "700", "900"],
   subsets: ["latin"],
 });
+
 export default function RootLayout({
   children,
 }: {
@@ -19,7 +21,9 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={poppins.className}>
         <PokemonProvider>
-          <StyledProvider>{children}</StyledProvider>
+          <StyledProvider>
+            <Header>{children}</Header>
+          </StyledProvider>
         </PokemonProvider>
       </body>
     </html>

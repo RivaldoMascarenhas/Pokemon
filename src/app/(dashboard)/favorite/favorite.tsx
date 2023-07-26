@@ -1,6 +1,7 @@
+"use client";
 import { PokemonContext } from "@/context/contextPokemon";
 import { useContext } from "react";
-import { Card } from "../card";
+import { Card } from "../../components/card";
 import { SeeAllContainer } from "../seeAll/style";
 import img from "public/astronaut-pana.png";
 import Image from "next/image";

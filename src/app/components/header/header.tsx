@@ -1,18 +1,21 @@
 "use client";
-import { useContext, useState } from "react";
+import { ReactNode, useContext, useState } from "react";
+import { useRouter } from "next/navigation";
 import { PokemonContext } from "@/context/contextPokemon";
 import Image from "next/image";
-import { SeeAll } from "../seeAll";
-import { Search } from "../search";
-import { Favorite } from "../favorite";
 import * as S from "./style";
 import logo from "public/logo.png";
-import { Item } from "./components/itemList/item";
+import { Item } from "../itemList/item";
 
-export function Header() {
+export function Header({ children }: { children: ReactNode }) {
   const { state } = useContext(PokemonContext);
-  const [page, setPage] = useState("Ver todos");
+  const [page, setPage] = useState("seeAll");
+  const router = useRouter();
   const numberFavorites = state.favorite.length;
+  const handlePage = (text: string) => {
+    router.push(`/${text}`);
+    setPage(text);
+  };
   return (
     <div>
       <S.Header>
@@ -20,34 +23,28 @@ export function Header() {
           <S.Logo href="/">
             <Image src={logo} width={75} height={30} alt={"Pokémon"} />
           </S.Logo>
-
           <ul>
             <Item
               numberFavorite={numberFavorites}
-              isClicked={page === "Favoritos" ? "active" : "disable"}
-              onClick={() => setPage("Favoritos")}
+              isclicked={page === "favorite" ? "active" : "disable"}
+              onClick={() => handlePage("favorite")}
               text={"Favoritos"}
             />
             <Item
               text={"Procurar"}
-              isClicked={page === "Procurar" ? "active" : "disable"}
-              onClick={() => setPage("Procurar")}
+              isclicked={page === "search" ? "active" : "disable"}
+              onClick={() => handlePage("search")}
             />
             <Item
               text={"Ver todos"}
-              isClicked={page === "Ver todos" ? "active" : "disable"}
-              onClick={() => setPage("Ver todos")}
+              isclicked={page === "seeAll" ? "active" : "disable"}
+              onClick={() => handlePage("seeAll")}
             />
           </ul>
-
           <button>Sair</button>
         </S.HeaderContainer>
       </S.Header>
-      <S.Main>
-        {page === "Ver todos" && <SeeAll />}
-        {page === "Procurar" && <Search />}
-        {page === "Favoritos" && <Favorite />}
-      </S.Main>
+      <S.Main>{children}</S.Main>
     </div>
   );
 }

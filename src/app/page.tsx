@@ -1,10 +1,4 @@
-"use client";
-import { useContext } from "react";
-import { Header } from "./components/header";
-import { PokemonContext } from "@/context/contextPokemon";
-import IsLoading from "./components/loading";
-
+import { SeeAll } from "./(dashboard)/seeAll";
 export default function Home() {
-  const { state } = useContext(PokemonContext);
-  return state.isLoading ? <IsLoading /> : <Header />;
+  return <SeeAll />;
 }

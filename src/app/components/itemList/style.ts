@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 interface ItemContainerProps {
-  isCliked: "active" | "disable";
+  $isCliked: "active" | "disable";
 }
 
 export const ItemContainer = styled.li<ItemContainerProps>`
@@ -14,7 +14,7 @@ export const ItemContainer = styled.li<ItemContainerProps>`
   cursor: pointer;
   z-index: 1;
   border-bottom: ${(p) =>
-    p.isCliked === "active" ? "6px solid black" : "6px solid transparent"};
+    p.$isCliked === "active" ? "6px solid black" : "6px solid transparent"};
   && > span {
     position: absolute;
     top: 0.5rem;
