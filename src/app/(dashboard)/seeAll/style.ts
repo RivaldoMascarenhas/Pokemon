@@ -26,10 +26,7 @@ export const SeeAllContainer = styled.div<SeeAllContainerProps>`
   grid-template-rows: repeat(auto-fill, minmax(240px, 240px));
   grid-gap: 1rem;
   width: 100%;
-  /* height: calc(100vh - 14vh); */
   padding: ${({ $padding }) => $padding}rem;
-  /* overflow-y: auto;
-  overflow-x: auto; */
 `;
 
 export const ContainerRoot = styled(Root)`
