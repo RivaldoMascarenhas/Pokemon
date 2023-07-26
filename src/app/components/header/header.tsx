@@ -9,13 +9,11 @@ import * as S from "./style";
 import logo from "public/logo.png";
 
 export function Header({ children }: { children: ReactNode }) {
-  const { state } = useContext(PokemonContext);
-  const [page, setPage] = useState("/");
+  const { state, dispatch } = useContext(PokemonContext);
   const router = useRouter();
   const numberFavorites = state.favorite.length;
   const handlePage = (text: string) => {
-    router.push(`/${text}`);
-    setPage(text);
+    dispatch({ type: "page", payload: text });
   };
   return (
     <div>
@@ -27,18 +25,18 @@ export function Header({ children }: { children: ReactNode }) {
           <ul>
             <Item
               numberFavorite={numberFavorites}
-              isclicked={page === "favorite" ? "active" : "disable"}
+              isclicked={state.page === "favorite" ? "active" : "disable"}
               onClick={() => handlePage("favorite")}
               text={"Favoritos"}
             />
             <Item
               text={"Procurar"}
-              isclicked={page === "search" ? "active" : "disable"}
+              isclicked={state.page === "search" ? "active" : "disable"}
               onClick={() => handlePage("search")}
             />
             <Item
               text={"Ver todos"}
-              isclicked={page === "/" ? "active" : "disable"}
+              isclicked={state.page === "/" ? "active" : "disable"}
               onClick={() => handlePage("/")}
             />
           </ul>
@@ -47,7 +45,7 @@ export function Header({ children }: { children: ReactNode }) {
           </button>
         </S.HeaderContainer>
       </S.Header>
-      <S.Main>{children}</S.Main>
+      <div>{children}</div>
     </div>
   );
 }

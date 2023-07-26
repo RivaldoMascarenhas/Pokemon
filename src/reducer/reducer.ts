@@ -21,6 +21,8 @@ export function pokemonReducer(state: TypeStateProps, action: ActionProps) {
       return { ...state, isLoading: action.payload as boolean };
     case "favorite":
       return { ...state, favorite: action.payload as ResponseObject[] };
+    case "page":
+      return { ...state, page: action.payload as string };
     default:
       return state;
   }

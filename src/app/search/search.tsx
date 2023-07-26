@@ -1,8 +1,8 @@
 "use client";
 import { useSearch } from "@/hooks";
-import { SearchInput } from "./components/searchInput";
-import { Card } from "@/app/components/card";
 import * as S from "../seeAll/style";
+import { SearchInput } from "../components/searchInput";
+import { Card } from "../components/card";
 
 export function Search() {
   const { handleGetValueInput, data } = useSearch();

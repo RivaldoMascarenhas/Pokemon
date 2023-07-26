@@ -44,7 +44,7 @@ export const Logo = styled.a`
   }
 `;
 export const Main = styled.main`
-  width: 75%;
+  width: 70%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
