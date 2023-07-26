@@ -1,5 +1,5 @@
 import { AllNamePokemonProps, ResponseObject, TypeStateProps } from "@/@types";
-import { pokemonAPI } from "@/api/pokemon";
+import { pokemonAPI } from "@/app/api/pokemon";
 import { ActionProps } from "@/reducer/reducer";
 import { Dispatch, useCallback, useEffect } from "react";
 interface Props {
