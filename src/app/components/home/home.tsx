@@ -1,12 +1,11 @@
 "use client";
-import { useContext } from "react";
-import { PokemonContext } from "@/context/contextPokemon";
-import { Main } from "../header/style";
-import { SeeAll } from "../seeAll";
+import { usePokemonContext } from "@/context/contextPokemon";
 import { Favorite } from "../favorite";
+import { Main } from "../header/style";
 import { Search } from "../search";
+import { SeeAll } from "../seeAll";
 export default function Home() {
-  const { state } = useContext(PokemonContext);
+  const { state } = usePokemonContext();
   return (
     <Main>
       {state.page === "/" && <SeeAll />}

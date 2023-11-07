@@ -1,8 +1,8 @@
-import { PokemonContext } from "@/context/contextPokemon";
-import { ChangeEvent, useContext, useState } from "react";
+import { usePokemonContext } from "@/context/contextPokemon";
+import { ChangeEvent, useState } from "react";
 
 export function useSearch() {
-  const { state } = useContext(PokemonContext);
+  const { state } = usePokemonContext();
   const [resultSearch, setResultSearch] = useState<string>("");
   const handleGetValueInput = (e: ChangeEvent<HTMLInputElement>) => {
     const valueInput = e.target.value;

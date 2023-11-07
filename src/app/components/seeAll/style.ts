@@ -1,21 +1,17 @@
-import { styled } from "styled-components";
 import {
   Root,
   ToggleGroupItem,
   ToggleGroupItemProps,
 } from "@radix-ui/react-toggle-group";
-import { ForwardRefExoticComponent, RefAttributes } from "react";
+import { ForwardRefExoticComponent } from "react";
+import { styled } from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
+  gap: 1rem;
   padding: 1rem;
-  & > div {
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
-  }
 `;
 interface SeeAllContainerProps {
   $padding?: number;

@@ -1,10 +1,10 @@
 "use client";
-import { createContext, useReducer } from "react";
 import * as Types from "@/@types";
+import { useGetApi } from "@/api/pokemon";
 import { pokemonReducer } from "@/reducer/reducer";
-import { useGetApi } from "@/hooks";
+import { createContext, useContext, useReducer } from "react";
 
-export const PokemonContext = createContext({} as Types.PokemonContextProps);
+const PokemonContext = createContext({} as Types.PokemonContextProps);
 
 const typeStateInitial: Types.TypeStateProps = {
   AllNamePokemon: {
@@ -13,18 +13,21 @@ const typeStateInitial: Types.TypeStateProps = {
     previous: null,
     results: [],
   } as Types.AllNamePokemonProps,
-  pokemons: [] as Types.ResponseObject[],
+  pokemons: [] satisfies Types.ResponseObject[],
   isLoading: true,
-  favorite: [] as Types.ResponseObject[],
+  favorite: [] satisfies Types.ResponseObject[],
   page: "/",
 };
 
 export const PokemonProvider = ({ children }: Types.PokemonProviderProps) => {
   const [state, dispatch] = useReducer(pokemonReducer, typeStateInitial);
   useGetApi({ state, dispatch });
+
   return (
     <PokemonContext.Provider value={{ state, dispatch }}>
       {children}
     </PokemonContext.Provider>
   );
 };
+
+export const usePokemonContext = () => useContext(PokemonContext);

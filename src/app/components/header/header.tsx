@@ -1,16 +1,14 @@
 "use client";
-import { ReactNode, useContext, useState } from "react";
-import { useRouter } from "next/navigation";
-import { PokemonContext } from "@/context/contextPokemon";
-import { Item } from "../itemList/item";
-import { FiLogOut } from "react-icons/fi";
+import { usePokemonContext } from "@/context/contextPokemon";
 import Image from "next/image";
-import * as S from "./style";
 import logo from "public/logo.png";
+import { ReactNode } from "react";
+import { FiLogOut } from "react-icons/fi";
+import { Item } from "../itemList/item";
+import * as S from "./style";
 
 export function Header({ children }: { children: ReactNode }) {
-  const { state, dispatch } = useContext(PokemonContext);
-  const router = useRouter();
+  const { state, dispatch } = usePokemonContext();
   const numberFavorites = state.favorite.length;
   const handlePage = (text: string) => {
     dispatch({ type: "page", payload: text });

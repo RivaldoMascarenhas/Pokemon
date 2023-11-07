@@ -1,8 +1,8 @@
-import { PokemonContext } from "@/context/contextPokemon";
-import { useContext, useState } from "react";
+import { usePokemonContext } from "@/context/contextPokemon";
+import { useState } from "react";
 
 export function useSeeAll() {
-  const { state } = useContext(PokemonContext);
+  const { state } = usePokemonContext();
   const [typeCards, setTypeCards] = useState<string>("todos");
   const handleValueChange = (type: string) => setTypeCards(type);
   const typesPokemons: string[] = []; // para add type cards
