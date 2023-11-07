@@ -12,14 +12,14 @@ export function SeeAll() {
         defaultValue="todos"
         onValueChange={handleValueChange}
       >
-        <S.GroupItens $propsColor={typeCards} value="todos">
+        <S.GroupItems $propsColor={typeCards} value="todos">
           Todos
-        </S.GroupItens>
+        </S.GroupItems>
         {typesPokemons.map((t) => {
           return (
-            <S.GroupItens key={t} value={t} $propsColor={typeCards}>
+            <S.GroupItems key={t} value={t} $propsColor={typeCards}>
               {t.charAt(0).toUpperCase() + t.slice(1)}
-            </S.GroupItens>
+            </S.GroupItems>
           );
         })}
       </S.ContainerRoot>

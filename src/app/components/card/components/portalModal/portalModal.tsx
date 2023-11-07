@@ -1,13 +1,13 @@
 "use client";
-import Image from "next/image";
 import { UseCardProps } from "@/@types";
+import { Button } from "@/app/components/button";
+import * as Dialog from "@radix-ui/react-dialog";
+import Image from "next/image";
 import { BsBookmark } from "react-icons/bs";
-import { TypePokemons } from "../typePokemons";
 import { NamePokemon } from "../../style";
 import { StaticPokemon } from "../staticPokemon";
-import * as Dialog from "@radix-ui/react-dialog";
+import { TypePokemons } from "../typePokemons";
 import * as S from "./style";
-import { Button } from "@/app/components/button";
 
 interface PortalModalProps {
   data: UseCardProps;
@@ -50,7 +50,7 @@ export function PortalModal({ data }: PortalModalProps) {
           </S.WeightHeightContainer>
           <TypePokemons pokemon={data.pokemon} />
           <StaticPokemon pokemon={data.pokemon} />
-          {!data.isFavorited ? (
+          {!data.isFavorite ? (
             <Button
               favorite="favorite"
               text="Adicionar aos favoritos"

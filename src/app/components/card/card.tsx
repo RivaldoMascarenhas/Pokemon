@@ -1,19 +1,19 @@
 "use client";
-import Image from "next/image";
-import { useCard } from "@/hooks";
 import { ResponseObject } from "@/@types";
-import * as S from "./style";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useCard } from "@/hooks";
 import * as Dialog from "@radix-ui/react-dialog";
+import Image from "next/image";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { PortalModal } from "./components/portalModal";
 import { TypePokemons } from "./components/typePokemons";
+import * as S from "./style";
 
 export function Card({ pokemon }: { pokemon: ResponseObject }) {
   const data = useCard(pokemon);
   return (
     <S.ContainerCard>
       <S.Heart>
-        {data.isFavorited ? (
+        {data.isFavorite ? (
           <AiFillHeart onClick={data.handleDelete} size={25} color="red" />
         ) : (
           <AiOutlineHeart onClick={data.handleFavorite} size={25} />

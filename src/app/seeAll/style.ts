@@ -38,7 +38,7 @@ type ButtonProps = ForwardRefExoticComponent<
   } & ToggleGroupItemProps
 >;
 
-export const GroupItens = styled<ButtonProps>(ToggleGroupItem)`
+export const GroupItems = styled<ButtonProps>(ToggleGroupItem)`
   border: ${(props) =>
     props.$propsColor === props.value
       ? "none"

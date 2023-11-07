@@ -250,7 +250,7 @@ export interface UseCardProps {
   imgFront: string;
   formattedName: string;
   pokemon: ResponseObject;
-  isFavorited: boolean;
+  isFavorite: boolean;
   handleFavorite: () => void;
   handleDelete: () => void;
 }
