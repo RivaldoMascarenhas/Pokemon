@@ -1,10 +1,10 @@
 "use client";
 import { usePokemonContext } from "@/context/contextPokemon";
 import { Favorite } from "../favorite";
-import { Main } from "../header/style";
 import { Search } from "../search";
 import { SeeAll } from "../seeAll";
-export default function Home() {
+import { Main } from "./style";
+export function Home() {
   const { state } = usePokemonContext();
   return (
     <Main>

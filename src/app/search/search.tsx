@@ -1,7 +1,7 @@
 "use client";
 import { useSearch } from "@/hooks";
-import { Card } from "../card";
-import { SearchInput } from "../searchInput";
+import { Card } from "../components/card";
+import { SearchInput } from "../components/searchInput";
 import * as S from "../seeAll/style";
 
 export function Search() {

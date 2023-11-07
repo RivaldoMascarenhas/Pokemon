@@ -1,15 +1,15 @@
 "use client";
-import { InputHTMLAttributes } from "react";
+import { ComponentProps } from "react";
 import { CiSearch } from "react-icons/ci";
 import * as S from "./style";
 
-type SearchProps = InputHTMLAttributes<HTMLInputElement>;
+type SearchProps = ComponentProps<"input">;
 
-export function SearchInput({ type = "search", ...props }: SearchProps) {
+export function SearchInput({ ...props }: SearchProps) {
   return (
     <S.DivFixed>
       <S.ContainerInputSearch>
-        <input type={type} {...props} />
+        <input {...props} />
         <CiSearch size={25} />
       </S.ContainerInputSearch>
     </S.DivFixed>

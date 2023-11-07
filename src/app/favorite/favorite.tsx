@@ -2,7 +2,7 @@
 import { usePokemonContext } from "@/context/contextPokemon";
 import Image from "next/image";
 import img from "public/astronaut-pana.png";
-import { Card } from "../card";
+import { Card } from "../components/card";
 import { SeeAllContainer } from "../seeAll/style";
 import { ContainerNotFavorite } from "./style";
 

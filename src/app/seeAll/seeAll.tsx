@@ -1,6 +1,6 @@
 "use client";
 import { useSeeAll } from "@/hooks";
-import { Card } from "../card";
+import { Card } from "../components/card";
 import * as S from "./style";
 
 export function SeeAll() {
